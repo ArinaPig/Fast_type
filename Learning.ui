@@ -1,0 +1,3930 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Fast_type</class>
+ <widget class="QMainWindow" name="Fast_type">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Fast type</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1280</width>
+      <height>730</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(188, 255, 199, 255), stop:1 rgba(174, 231, 255, 255));</string>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="lvl_1">
+     <widget class="QLabel" name="let1_13">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ц</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_14">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ъ</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="yo_2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ё</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_12">
+      <property name="geometry">
+       <rect>
+        <x>780</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>д</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_13">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>п</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_11">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>м</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n1_2">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(0, 0, 0);
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="shift_l_2">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>500</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_14">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>о</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="enter_2">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>440</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Enter</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n9_2">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>9</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="text_2">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>180</y>
+        <width>911</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Просто текст</string>
+      </property>
+      <property name="margin">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_15">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>в</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="shift_r_2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>500</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n7_2">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>7</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="eq_2">
+      <property name="geometry">
+       <rect>
+        <x>910</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>=</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_12">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ч</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_15">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>г</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_16">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ы</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ctrl_l_2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>560</y>
+        <width>71</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="backspace_2">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>320</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Backspace</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_16">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ш</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_17">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>щ</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_18">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>к</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n2_2">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="win_l_2">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Win</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="slash_2">
+      <property name="geometry">
+       <rect>
+        <x>990</x>
+        <y>380</y>
+        <width>91</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>\</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_13">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>с</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_19">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>н</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_17">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>а</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_14">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ь</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n4_2">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>4</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="space_2">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>560</y>
+        <width>391</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(175, 175, 225);
+font: 10pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_15">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ю</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_18">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>л</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n3_2">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>3</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_20">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>з</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_16">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>я</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_19">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ж</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_21">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>х</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_22">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>й</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="win_r_2">
+      <property name="geometry">
+       <rect>
+        <x>880</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Win</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_17">
+      <property name="geometry">
+       <rect>
+        <x>760</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>б</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="tab_2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>380</y>
+        <width>71</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Tab</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="dash_2">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>-</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n8_2">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>8</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_20">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ф</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_23">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>е</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="caps_2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>440</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Caps Lock</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_21">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>р</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_18">
+      <property name="geometry">
+       <rect>
+        <x>880</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>.</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ctrl_r_2">
+      <property name="geometry">
+       <rect>
+        <x>1020</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n6_2">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>6</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_19">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>и</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_22">
+      <property name="geometry">
+       <rect>
+        <x>900</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>э</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n0_2">
+      <property name="geometry">
+       <rect>
+        <x>790</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_20">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>т</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="alt_r_2">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="bg_2">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>300</y>
+        <width>931</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(153, 180, 209);
+border-radius: 5px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="alt_l_2">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n5_2">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>5</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="menu_2">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Menu</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_24">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>у</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>-10</x>
+        <y>-10</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(188, 255, 199, 255);
+background-color: rgb(156, 212, 165);
+font: 10pt &quot;Montserrat Medium&quot;;
+border-radius: 10px;</string>
+      </property>
+      <property name="text">
+       <string>Уровень 1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+      </property>
+      <property name="indent">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>70</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10px;
+font: 15pt &quot;Roboto&quot;;</string>
+      </property>
+      <property name="text">
+       <string>00:00</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>75</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10px;
+font: 15pt &quot;Roboto&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Старт</string>
+      </property>
+     </widget>
+     <zorder>bg_2</zorder>
+     <zorder>let1_13</zorder>
+     <zorder>let1_14</zorder>
+     <zorder>yo_2</zorder>
+     <zorder>let2_12</zorder>
+     <zorder>let2_13</zorder>
+     <zorder>let3_11</zorder>
+     <zorder>n1_2</zorder>
+     <zorder>shift_l_2</zorder>
+     <zorder>let2_14</zorder>
+     <zorder>enter_2</zorder>
+     <zorder>n9_2</zorder>
+     <zorder>text_2</zorder>
+     <zorder>let2_15</zorder>
+     <zorder>shift_r_2</zorder>
+     <zorder>n7_2</zorder>
+     <zorder>eq_2</zorder>
+     <zorder>let3_12</zorder>
+     <zorder>let1_15</zorder>
+     <zorder>let2_16</zorder>
+     <zorder>ctrl_l_2</zorder>
+     <zorder>backspace_2</zorder>
+     <zorder>let1_16</zorder>
+     <zorder>let1_17</zorder>
+     <zorder>let1_18</zorder>
+     <zorder>n2_2</zorder>
+     <zorder>win_l_2</zorder>
+     <zorder>slash_2</zorder>
+     <zorder>let3_13</zorder>
+     <zorder>let1_19</zorder>
+     <zorder>let2_17</zorder>
+     <zorder>let3_14</zorder>
+     <zorder>n4_2</zorder>
+     <zorder>space_2</zorder>
+     <zorder>let3_15</zorder>
+     <zorder>let2_18</zorder>
+     <zorder>n3_2</zorder>
+     <zorder>let1_20</zorder>
+     <zorder>let3_16</zorder>
+     <zorder>let2_19</zorder>
+     <zorder>let1_21</zorder>
+     <zorder>let1_22</zorder>
+     <zorder>win_r_2</zorder>
+     <zorder>let3_17</zorder>
+     <zorder>tab_2</zorder>
+     <zorder>dash_2</zorder>
+     <zorder>n8_2</zorder>
+     <zorder>let2_20</zorder>
+     <zorder>let1_23</zorder>
+     <zorder>caps_2</zorder>
+     <zorder>let2_21</zorder>
+     <zorder>let3_18</zorder>
+     <zorder>ctrl_r_2</zorder>
+     <zorder>n6_2</zorder>
+     <zorder>let3_19</zorder>
+     <zorder>let2_22</zorder>
+     <zorder>n0_2</zorder>
+     <zorder>let3_20</zorder>
+     <zorder>alt_r_2</zorder>
+     <zorder>alt_l_2</zorder>
+     <zorder>n5_2</zorder>
+     <zorder>menu_2</zorder>
+     <zorder>let1_24</zorder>
+     <zorder>label</zorder>
+     <zorder>label_4</zorder>
+     <zorder>pushButton</zorder>
+    </widget>
+    <widget class="QWidget" name="lvl_2">
+     <widget class="QLabel" name="shift_l">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>500</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_12">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ъ</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ctrl_l">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>560</y>
+        <width>71</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_4">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>к</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n2">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n3">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>3</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_3">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>у</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="dash">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>-</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_5">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>е</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_7">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ь</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_9">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ю</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n9">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>9</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_8">
+      <property name="geometry">
+       <rect>
+        <x>760</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>б</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="space">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>560</y>
+        <width>391</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(175, 175, 225);
+font: 10pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="alt_l">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n5">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>5</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_6">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>т</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="slash">
+      <property name="geometry">
+       <rect>
+        <x>990</x>
+        <y>380</y>
+        <width>91</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>\</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n4">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>4</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_10">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>з</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_2">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ы</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_5">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>и</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="yo">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ё</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n1">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(0, 0, 0);
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_2">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ч</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="caps">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>440</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Caps Lock</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_10">
+      <property name="geometry">
+       <rect>
+        <x>880</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>.</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n0">
+      <property name="geometry">
+       <rect>
+        <x>790</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_7">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>о</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ctrl_r">
+      <property name="geometry">
+       <rect>
+        <x>1020</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_4">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>а</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="win_r">
+      <property name="geometry">
+       <rect>
+        <x>880</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Win</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="enter">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>440</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Enter</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_7">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>г</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_8">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ш</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_9">
+      <property name="geometry">
+       <rect>
+        <x>780</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>д</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="backspace">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>320</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Backspace</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="alt_r">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_2">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ц</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_1">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>я</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_5">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>п</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_6">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>н</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_3">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>в</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_10">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ж</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_11">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>х</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_1">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>й</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_6">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>р</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="bg">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>300</y>
+        <width>931</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(153, 180, 209);
+border-radius: 5px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_11">
+      <property name="geometry">
+       <rect>
+        <x>900</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>э</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_4">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>м</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="shift_r">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>500</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n7">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(223, 173, 226);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>7</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="win_l">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Win</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_8">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>л</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let1_9">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>380</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(226, 224, 173);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>щ</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="eq">
+      <property name="geometry">
+       <rect>
+        <x>910</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>=</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let2_1">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>440</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>ф</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n8">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(225, 175, 174);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>8</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="n6">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>320</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 226, 222);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>6</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="let3_3">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>500</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(173, 227, 176);
+font: 15pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>с</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="menu">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>560</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Menu</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="tab">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>380</y>
+        <width>71</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(215, 215, 215);
+color: rgb(50, 50, 50);
+font: 8pt &quot;Roboto&quot;;
+border-radius: 5px;
+border: 1px solid rgb(100, 100, 100);</string>
+      </property>
+      <property name="text">
+       <string>Tab</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="text">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>180</y>
+        <width>911</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Просто текст</string>
+      </property>
+      <property name="margin">
+       <number>10</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>-10</x>
+        <y>-10</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(188, 255, 199, 255);
+background-color: rgb(156, 212, 165);
+font: 10pt &quot;Montserrat Medium&quot;;
+border-radius: 10px;</string>
+      </property>
+      <property name="text">
+       <string>Уровень 2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+      </property>
+      <property name="indent">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>70</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10px;
+font: 15pt &quot;Roboto&quot;;</string>
+      </property>
+      <property name="text">
+       <string>00:00</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <zorder>bg</zorder>
+     <zorder>shift_l</zorder>
+     <zorder>let1_12</zorder>
+     <zorder>ctrl_l</zorder>
+     <zorder>let1_4</zorder>
+     <zorder>n2</zorder>
+     <zorder>n3</zorder>
+     <zorder>let1_3</zorder>
+     <zorder>dash</zorder>
+     <zorder>let1_5</zorder>
+     <zorder>let3_7</zorder>
+     <zorder>let3_9</zorder>
+     <zorder>n9</zorder>
+     <zorder>let3_8</zorder>
+     <zorder>space</zorder>
+     <zorder>alt_l</zorder>
+     <zorder>n5</zorder>
+     <zorder>let3_6</zorder>
+     <zorder>slash</zorder>
+     <zorder>n4</zorder>
+     <zorder>let1_10</zorder>
+     <zorder>let2_2</zorder>
+     <zorder>let3_5</zorder>
+     <zorder>yo</zorder>
+     <zorder>n1</zorder>
+     <zorder>let3_2</zorder>
+     <zorder>caps</zorder>
+     <zorder>let3_10</zorder>
+     <zorder>n0</zorder>
+     <zorder>let2_7</zorder>
+     <zorder>ctrl_r</zorder>
+     <zorder>let2_4</zorder>
+     <zorder>win_r</zorder>
+     <zorder>enter</zorder>
+     <zorder>let1_7</zorder>
+     <zorder>let1_8</zorder>
+     <zorder>let2_9</zorder>
+     <zorder>backspace</zorder>
+     <zorder>alt_r</zorder>
+     <zorder>let1_2</zorder>
+     <zorder>let3_1</zorder>
+     <zorder>let2_5</zorder>
+     <zorder>let1_6</zorder>
+     <zorder>let2_3</zorder>
+     <zorder>let2_10</zorder>
+     <zorder>let1_11</zorder>
+     <zorder>let1_1</zorder>
+     <zorder>let2_6</zorder>
+     <zorder>let2_11</zorder>
+     <zorder>let3_4</zorder>
+     <zorder>shift_r</zorder>
+     <zorder>n7</zorder>
+     <zorder>win_l</zorder>
+     <zorder>let2_8</zorder>
+     <zorder>let1_9</zorder>
+     <zorder>eq</zorder>
+     <zorder>let2_1</zorder>
+     <zorder>n8</zorder>
+     <zorder>n6</zorder>
+     <zorder>let3_3</zorder>
+     <zorder>menu</zorder>
+     <zorder>tab</zorder>
+     <zorder>text</zorder>
+     <zorder>label_2</zorder>
+     <zorder>label_3</zorder>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

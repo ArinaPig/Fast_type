@@ -18,7 +18,7 @@ from keyboard import *
 class Ui_MainWindow(object):
     def displayTime(self):
         f_temp = datetime.utcfromtimestamp(self.temp).strftime("%M:%S")
-        self.time_label.setText(f_temp)
+        self.time_label_1.setText(f_temp)
         self.temp += 1
 
     def btn(self, num):
@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
         self.win()
 
     def win(self):
-        self.label.setText(f"Уровень {self.num}")
+        self.lvl_label.setText(f"Уровень {self.num}")
 
         self.l = []
 
@@ -42,16 +42,16 @@ class Ui_MainWindow(object):
 
         self.temp = 0
         
-        self.text_1.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.text_1.setFont(QtGui.QFont("Roboto", 20))
-        self.text_1.setText('Нажмите любую клавишу')
+        self.inp_1.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.inp_1.setFont(QtGui.QFont("Roboto", 20))
+        self.inp_1.setText('Нажмите любую клавишу')
 
         self.timer.start()
 
     def start_level(self):
         key_pressed = read_event()
         if key_pressed.event_type == KEY_DOWN:
-            self.text_1.setText(self.s)
+            self.inp_1.setText(self.s)
             self.level()
 
     def level(self):
@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
             if key.event_type == KEY_UP and (key_name == self.s[i]) or (key_name == 'space' and self.s[i] == ' '):
                 i += 1
                 text = self.s[i:]
-                self.text_1.setText(text)
+                self.inp_1.setText(text)
                 continue
             elif key.event_type == KEY_UP and ((key_name != 'space' and self.s[i - 1] == ' ') or (
                     self.s[i - 1] != ' ' and key_name != self.s[i - 1])):
@@ -74,13 +74,18 @@ class Ui_MainWindow(object):
         f_temp = datetime.utcfromtimestamp(self.temp - 1).strftime("%M:%S")
         v = round(i / (self.temp - 1) * 60)
         end = 'Ошибки: ' + str(mist) + '   Введено символов: ' + str(i) + '   Время: ' + str(f_temp) + '   Скорость (зн/мин): ' + str(v)
-        self.text_1.setAlignment(QtCore.Qt.AlignCenter)
-        self.text_1.setFont(QtGui.QFont("Roboto", 17))
-        self.text_1.setText(end)
+        self.inp_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.inp_1.setFont(QtGui.QFont("Roboto", 17))
+        self.inp_1.setText(end)
         print('ошибки: ', mist)
         print('введено символов: ', i)
         print('время: ', f_temp)
         print('скорость (зн/мин): ', v)
+
+    def btn_st(self, num):
+        self.stackedWidget.setCurrentIndex(2)
+        self.num = num
+        self.win()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -118,7 +123,7 @@ class Ui_MainWindow(object):
         self.Fast.setObjectName("Fast")
         self.lrn = QtWidgets.QPushButton(self.Main)
         self.lrn.setFocusPolicy(Qt.NoFocus)
-        self.lrn.setGeometry(QtCore.QRect(440, 280, 421, 121))
+        self.lrn.setGeometry(QtCore.QRect(270, 350, 340, 120))
         self.lrn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.lrn.setStyleSheet("QPushButton{\n"
                                "    background-color: rgb(255, 170, 170);\n"
@@ -134,28 +139,10 @@ class Ui_MainWindow(object):
                                "    background-color: rgb(229, 150, 150);       \n"
                                "}")
         self.lrn.setObjectName("lrn")
-        self.gm = QtWidgets.QPushButton(self.Main)
-        self.gm.setFocusPolicy(Qt.NoFocus)
-        self.gm.setGeometry(QtCore.QRect(770, 470, 341, 121))
-        self.gm.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.gm.setStyleSheet("QPushButton{\n"
-                              "    background-color: rgb(255, 203, 185);\n"
-                              "    font: 57 20pt \"Montserrat Medium\";\n"
-                              "    border-radius: 20px;\n"
-                              "}\n"
-                              "\n"
-                              "QPushButton:hover {\n"
-                              "    font-size: 22pt;   \n"
-                              "}\n"
-                              "\n"
-                              "QPushButton:pressed {\n"
-                              "    background-color: rgb(229, 182, 166);       \n"
-                              "}\n"
-                              "")
-        self.gm.setObjectName("gm")
+
         self.ex = QtWidgets.QPushButton(self.Main)
         self.ex.setFocusPolicy(Qt.NoFocus)
-        self.ex.setGeometry(QtCore.QRect(180, 470, 341, 121))
+        self.ex.setGeometry(QtCore.QRect(670, 350, 340, 120))
         self.ex.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.ex.setStyleSheet("QPushButton{\n"
                               "    background-color: rgb(255, 203, 185);\n"
@@ -172,6 +159,7 @@ class Ui_MainWindow(object):
                               "}")
         self.ex.setObjectName("ex")
         self.stackedWidget.addWidget(self.Main)
+
         self.Learning = QtWidgets.QWidget()
         self.Learning.setStyleSheet(
             "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(188, 255, 199, 255), stop:1 rgba(174, 231, 255, 255));")
@@ -442,737 +430,810 @@ class Ui_MainWindow(object):
         self.menu_icon_lvl.setObjectName("menu_icon")
         self.menu_icon_lvl.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
 
-        self.let1_23 = QtWidgets.QLabel(self.Levels)
-        self.let1_23.setGeometry(QtCore.QRect(510, 380, 51, 51))
-        self.let1_23.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_23.setAutoFillBackground(False)
-        self.let1_23.setStyleSheet("background-color: rgb(173, 226, 222);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let1_23.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_23.setObjectName("let1_23")
-        self.let2_14 = QtWidgets.QLabel(self.Levels)
-        self.let2_14.setGeometry(QtCore.QRect(660, 440, 51, 51))
-        self.let2_14.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_14.setAutoFillBackground(False)
-        self.let2_14.setStyleSheet("background-color: rgb(223, 173, 226);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let2_14.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_14.setObjectName("let2_14")
-        self.label = QtWidgets.QLabel(self.Levels)
-        self.label.setGeometry(QtCore.QRect(-20, -10, 121, 41))
-        self.label.setStyleSheet("background-color: rgba(188, 255, 199, 255);\n"
-                                 "background-color: rgb(156, 212, 165);\n"
-                                 "font: 10pt \"Montserrat Medium\";\n"
-                                 "border-radius: 10px;")
-        self.label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
-        self.label.setIndent(5)
-        self.label.setObjectName("label")
-        self.let2_17 = QtWidgets.QLabel(self.Levels)
-        self.let2_17.setGeometry(QtCore.QRect(480, 440, 51, 51))
-        self.let2_17.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_17.setAutoFillBackground(False)
-        self.let2_17.setStyleSheet("background-color: rgb(173, 226, 222);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let2_17.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_17.setObjectName("let2_17")
-        self.let1_17 = QtWidgets.QLabel(self.Levels)
-        self.let1_17.setGeometry(QtCore.QRect(750, 380, 51, 51))
-        self.let1_17.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_17.setAutoFillBackground(False)
-        self.let1_17.setStyleSheet("background-color: rgb(226, 224, 173);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let1_17.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_17.setObjectName("let1_17")
-        self.let1_15 = QtWidgets.QLabel(self.Levels)
-        self.let1_15.setGeometry(QtCore.QRect(630, 380, 51, 51))
-        self.let1_15.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_15.setAutoFillBackground(False)
-        self.let1_15.setStyleSheet("background-color: rgb(223, 173, 226);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let1_15.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_15.setObjectName("let1_15")
-        self.n9_2 = QtWidgets.QLabel(self.Levels)
-        self.n9_2.setGeometry(QtCore.QRect(730, 320, 51, 51))
-        self.n9_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.n9_2.setAutoFillBackground(False)
-        self.n9_2.setStyleSheet("background-color: rgb(226, 224, 173);\n"
-                                "font: 15pt \"Roboto\";\n"
-                                "border-radius: 5px;\n"
-                                "border: 1px solid rgb(100, 100, 100);")
-        self.n9_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.n9_2.setObjectName("n9_2")
-        self.let2_18 = QtWidgets.QLabel(self.Levels)
-        self.let2_18.setGeometry(QtCore.QRect(720, 440, 51, 51))
-        self.let2_18.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_18.setAutoFillBackground(False)
-        self.let2_18.setStyleSheet("background-color: rgb(225, 175, 174);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let2_18.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_18.setObjectName("let2_18")
-        self.n7_2 = QtWidgets.QLabel(self.Levels)
-        self.n7_2.setGeometry(QtCore.QRect(610, 320, 51, 51))
-        self.n7_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.n7_2.setAutoFillBackground(False)
-        self.n7_2.setStyleSheet("background-color: rgb(223, 173, 226);\n"
-                                "font: 15pt \"Roboto\";\n"
-                                "border-radius: 5px;\n"
-                                "border: 1px solid rgb(100, 100, 100);")
-        self.n7_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.n7_2.setObjectName("n7_2")
-        self.let1_16 = QtWidgets.QLabel(self.Levels)
-        self.let1_16.setGeometry(QtCore.QRect(690, 380, 51, 51))
-        self.let1_16.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_16.setAutoFillBackground(False)
-        self.let1_16.setStyleSheet("background-color: rgb(225, 175, 174);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let1_16.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_16.setObjectName("let1_16")
-        self.eq_2 = QtWidgets.QLabel(self.Levels)
-        self.eq_2.setGeometry(QtCore.QRect(910, 320, 51, 51))
-        self.eq_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.eq_2.setAutoFillBackground(False)
-        self.eq_2.setStyleSheet("background-color: rgb(173, 227, 176);\n"
-                                "font: 15pt \"Roboto\";\n"
-                                "border-radius: 5px;\n"
-                                "border: 1px solid rgb(100, 100, 100);")
-        self.eq_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.eq_2.setObjectName("eq_2")
-        self.space_2 = QtWidgets.QLabel(self.Levels)
-        self.space_2.setGeometry(QtCore.QRect(410, 560, 391, 51))
-        self.space_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.space_2.setAutoFillBackground(False)
-        self.space_2.setStyleSheet("background-color: rgb(175, 175, 225);\n"
-                                   "font: 10pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.space_2.setText("")
-        self.space_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
-        self.space_2.setObjectName("space_2")
-        self.tab_2 = QtWidgets.QLabel(self.Levels)
-        self.tab_2.setGeometry(QtCore.QRect(190, 380, 71, 51))
-        self.tab_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.tab_2.setAutoFillBackground(False)
-        self.tab_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
-                                 "color: rgb(50, 50, 50);\n"
-                                 "font: 8pt \"Roboto\";\n"
-                                 "border-radius: 5px;\n"
-                                 "border: 1px solid rgb(100, 100, 100);")
-        self.tab_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
-        self.tab_2.setObjectName("tab_2")
-        self.tab_2.setIndent(5)
-        self.menu_2 = QtWidgets.QLabel(self.Levels)
-        self.menu_2.setGeometry(QtCore.QRect(950, 560, 61, 51))
-        self.menu_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.menu_2.setAutoFillBackground(False)
-        self.menu_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
-                                  "color: rgb(50, 50, 50);\n"
-                                  "font: 8pt \"Roboto\";\n"
-                                  "border-radius: 5px;\n"
-                                  "border: 1px solid rgb(100, 100, 100);")
-        self.menu_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.menu_2.setObjectName("menu_2")
-        self.let2_20 = QtWidgets.QLabel(self.Levels)
-        self.let2_20.setGeometry(QtCore.QRect(300, 440, 51, 51))
-        self.let2_20.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_20.setAutoFillBackground(False)
-        self.let2_20.setStyleSheet("background-color: rgb(225, 175, 174);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let2_20.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_20.setObjectName("let2_20")
-        self.let3_17 = QtWidgets.QLabel(self.Levels)
-        self.let3_17.setGeometry(QtCore.QRect(760, 500, 51, 51))
-        self.let3_17.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let3_17.setAutoFillBackground(False)
-        self.let3_17.setStyleSheet("background-color: rgb(225, 175, 174);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let3_17.setAlignment(QtCore.Qt.AlignCenter)
-        self.let3_17.setObjectName("let3_17")
-        self.let3_16 = QtWidgets.QLabel(self.Levels)
-        self.let3_16.setGeometry(QtCore.QRect(340, 500, 51, 51))
-        self.let3_16.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let3_16.setAutoFillBackground(False)
-        self.let3_16.setStyleSheet("background-color: rgb(225, 175, 174);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let3_16.setAlignment(QtCore.Qt.AlignCenter)
-        self.let3_16.setObjectName("let3_16")
-        self.shift_r_2 = QtWidgets.QLabel(self.Levels)
-        self.shift_r_2.setGeometry(QtCore.QRect(190, 500, 141, 51))
-        self.shift_r_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.shift_r_2.setAutoFillBackground(False)
-        self.shift_r_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
-                                     "color: rgb(50, 50, 50);\n"
-                                     "font: 8pt \"Roboto\";\n"
-                                     "border-radius: 5px;\n"
-                                     "border: 1px solid rgb(100, 100, 100);")
-        self.shift_r_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
-        self.shift_r_2.setIndent(10)
-        self.shift_r_2.setObjectName("shift_r_2")
-        self.let1_22 = QtWidgets.QLabel(self.Levels)
-        self.let1_22.setGeometry(QtCore.QRect(270, 380, 51, 51))
-        self.let1_22.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_22.setAutoFillBackground(False)
-        self.let1_22.setStyleSheet("background-color: rgb(225, 175, 174);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let1_22.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_22.setObjectName("let1_22")
-        self.dash_2 = QtWidgets.QLabel(self.Levels)
-        self.dash_2.setGeometry(QtCore.QRect(850, 320, 51, 51))
-        self.dash_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.dash_2.setAutoFillBackground(False)
-        self.dash_2.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+        self.let1_1 = QtWidgets.QLabel(self.Levels)
+        self.let1_1.setGeometry(QtCore.QRect(190, 320, 51, 51))
+        self.let1_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let1_1.setAutoFillBackground(False)
+        self.let1_1.setStyleSheet("background-color: rgb(225, 175, 174);\n"
                                   "font: 15pt \"Roboto\";\n"
                                   "border-radius: 5px;\n"
                                   "border: 1px solid rgb(100, 100, 100);")
-        self.dash_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.dash_2.setObjectName("dash_2")
-        self.let1_13 = QtWidgets.QLabel(self.Levels)
-        self.let1_13.setGeometry(QtCore.QRect(330, 380, 51, 51))
-        self.let1_13.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_13.setAutoFillBackground(False)
-        self.let1_13.setStyleSheet("background-color: rgb(226, 224, 173);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let1_13.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_13.setObjectName("let1_13")
-        self.let3_20 = QtWidgets.QLabel(self.Levels)
-        self.let3_20.setGeometry(QtCore.QRect(640, 500, 51, 51))
-        self.let3_20.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let3_20.setAutoFillBackground(False)
-        self.let3_20.setStyleSheet("background-color: rgb(223, 173, 226);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let3_20.setAlignment(QtCore.Qt.AlignCenter)
-        self.let3_20.setObjectName("let3_20")
-        self.let3_14 = QtWidgets.QLabel(self.Levels)
-        self.let3_14.setGeometry(QtCore.QRect(700, 500, 51, 51))
-        self.let3_14.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let3_14.setAutoFillBackground(False)
-        self.let3_14.setStyleSheet("background-color: rgb(223, 173, 226);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let3_14.setAlignment(QtCore.Qt.AlignCenter)
-        self.let3_14.setObjectName("let3_14")
-        self.let2_13 = QtWidgets.QLabel(self.Levels)
-        self.let2_13.setGeometry(QtCore.QRect(540, 440, 51, 51))
-        self.let2_13.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_13.setAutoFillBackground(False)
-        self.let2_13.setStyleSheet("background-color: rgb(173, 226, 222);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let2_13.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_13.setObjectName("let2_13")
-        self.alt_l_2 = QtWidgets.QLabel(self.Levels)
-        self.alt_l_2.setGeometry(QtCore.QRect(340, 560, 61, 51))
-        self.alt_l_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.alt_l_2.setAutoFillBackground(False)
-        self.alt_l_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
-                                   "color: rgb(50, 50, 50);\n"
-                                   "font: 8pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.alt_l_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.alt_l_2.setObjectName("alt_l_2")
-        self.let1_19 = QtWidgets.QLabel(self.Levels)
-        self.let1_19.setGeometry(QtCore.QRect(570, 380, 51, 51))
-        self.let1_19.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_19.setAutoFillBackground(False)
-        self.let1_19.setStyleSheet("background-color: rgb(223, 173, 226);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let1_19.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_19.setObjectName("let1_19")
-        self.n5_2 = QtWidgets.QLabel(self.Levels)
-        self.n5_2.setGeometry(QtCore.QRect(490, 320, 51, 51))
-        self.n5_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.n5_2.setAutoFillBackground(False)
-        self.n5_2.setStyleSheet("background-color: rgb(173, 226, 222);\n"
-                                "font: 15pt \"Roboto\";\n"
-                                "border-radius: 5px;\n"
-                                "border: 1px solid rgb(100, 100, 100);")
-        self.n5_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.n5_2.setObjectName("n5_2")
-        self.let2_12 = QtWidgets.QLabel(self.Levels)
-        self.let2_12.setGeometry(QtCore.QRect(780, 440, 51, 51))
-        self.let2_12.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_12.setAutoFillBackground(False)
-        self.let2_12.setStyleSheet("background-color: rgb(226, 224, 173);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let2_12.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_12.setObjectName("let2_12")
-        self.let2_15 = QtWidgets.QLabel(self.Levels)
-        self.let2_15.setGeometry(QtCore.QRect(420, 440, 51, 51))
-        self.let2_15.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_15.setAutoFillBackground(False)
-        self.let2_15.setStyleSheet("background-color: rgb(173, 227, 176);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let2_15.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_15.setObjectName("let2_15")
-        self.let3_15 = QtWidgets.QLabel(self.Levels)
-        self.let3_15.setGeometry(QtCore.QRect(820, 500, 51, 51))
-        self.let3_15.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let3_15.setAutoFillBackground(False)
-        self.let3_15.setStyleSheet("background-color: rgb(226, 224, 173);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let3_15.setAlignment(QtCore.Qt.AlignCenter)
-        self.let3_15.setObjectName("let3_15")
-        self.alt_r_2 = QtWidgets.QLabel(self.Levels)
-        self.alt_r_2.setGeometry(QtCore.QRect(810, 560, 61, 51))
-        self.alt_r_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.alt_r_2.setAutoFillBackground(False)
-        self.alt_r_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
-                                   "color: rgb(50, 50, 50);\n"
-                                   "font: 8pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.alt_r_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.alt_r_2.setObjectName("alt_r_2")
-        self.win_r_2 = QtWidgets.QLabel(self.Levels)
-        self.win_r_2.setGeometry(QtCore.QRect(880, 560, 61, 51))
-        self.win_r_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.win_r_2.setAutoFillBackground(False)
-        self.win_r_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
-                                   "color: rgb(50, 50, 50);\n"
-                                   "font: 8pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.win_r_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.win_r_2.setObjectName("win_r_2")
-        self.yo_2 = QtWidgets.QLabel(self.Levels)
-        self.yo_2.setGeometry(QtCore.QRect(190, 320, 51, 51))
-        self.yo_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.yo_2.setAutoFillBackground(False)
-        self.yo_2.setStyleSheet("background-color: rgb(225, 175, 174);\n"
-                                "font: 15pt \"Roboto\";\n"
-                                "border-radius: 5px;\n"
-                                "border: 1px solid rgb(100, 100, 100);")
-        self.yo_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.yo_2.setObjectName("yo_2")
-        self.let2_16 = QtWidgets.QLabel(self.Levels)
-        self.let2_16.setGeometry(QtCore.QRect(360, 440, 51, 51))
-        self.let2_16.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_16.setAutoFillBackground(False)
-        self.let2_16.setStyleSheet("background-color: rgb(226, 224, 173);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let2_16.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_16.setObjectName("let2_16")
-        self.let2_21 = QtWidgets.QLabel(self.Levels)
-        self.let2_21.setGeometry(QtCore.QRect(600, 440, 51, 51))
-        self.let2_21.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_21.setAutoFillBackground(False)
-        self.let2_21.setStyleSheet("background-color: rgb(223, 173, 226);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let2_21.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_21.setObjectName("let2_21")
-        self.n1_2 = QtWidgets.QLabel(self.Levels)
-        self.n1_2.setGeometry(QtCore.QRect(250, 320, 51, 51))
-        self.n1_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.n1_2.setAutoFillBackground(False)
-        self.n1_2.setStyleSheet("background-color: rgb(225, 175, 174);\n"
+        self.let1_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let1_1.setObjectName("let1_1")
+
+        self.n1_1 = QtWidgets.QLabel(self.Levels)
+        self.n1_1.setGeometry(QtCore.QRect(250, 320, 51, 51))
+        self.n1_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.n1_1.setAutoFillBackground(False)
+        self.n1_1.setStyleSheet("background-color: rgb(225, 175, 174);\n"
                                 "font: 15pt \"Roboto\";\n"
                                 "border-radius: 5px;\n"
                                 "border: 1px solid rgb(0, 0, 0);\n"
                                 "border: 1px solid rgb(100, 100, 100);")
-        self.n1_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.n1_2.setObjectName("n1_2")
-        self.n4_2 = QtWidgets.QLabel(self.Levels)
-        self.n4_2.setGeometry(QtCore.QRect(430, 320, 51, 51))
-        self.n4_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.n4_2.setAutoFillBackground(False)
-        self.n4_2.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+        self.n1_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.n1_1.setObjectName("n1_1")
+
+        self.n2_1 = QtWidgets.QLabel(self.Levels)
+        self.n2_1.setGeometry(QtCore.QRect(310, 320, 51, 51))
+        self.n2_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.n2_1.setAutoFillBackground(False)
+        self.n2_1.setStyleSheet("background-color: rgb(225, 175, 174);\n"
                                 "font: 15pt \"Roboto\";\n"
                                 "border-radius: 5px;\n"
                                 "border: 1px solid rgb(100, 100, 100);")
-        self.n4_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.n4_2.setObjectName("n4_2")
-        self.let3_12 = QtWidgets.QLabel(self.Levels)
-        self.let3_12.setGeometry(QtCore.QRect(400, 500, 51, 51))
-        self.let3_12.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let3_12.setAutoFillBackground(False)
-        self.let3_12.setStyleSheet("background-color: rgb(226, 224, 173);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let3_12.setAlignment(QtCore.Qt.AlignCenter)
-        self.let3_12.setObjectName("let3_12")
-        self.n0_2 = QtWidgets.QLabel(self.Levels)
-        self.n0_2.setGeometry(QtCore.QRect(790, 320, 51, 51))
-        self.n0_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.n0_2.setAutoFillBackground(False)
-        self.n0_2.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+        self.n2_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.n2_1.setObjectName("n2_1")
+
+        self.n3_1 = QtWidgets.QLabel(self.Levels)
+        self.n3_1.setGeometry(QtCore.QRect(370, 320, 51, 51))
+        self.n3_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.n3_1.setAutoFillBackground(False)
+        self.n3_1.setStyleSheet("background-color: rgb(226, 224, 173);\n"
                                 "font: 15pt \"Roboto\";\n"
                                 "border-radius: 5px;\n"
                                 "border: 1px solid rgb(100, 100, 100);")
-        self.n0_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.n0_2.setObjectName("n0_2")
-        self.text_1 = QtWidgets.QLabel(self.Levels)
-        self.text_1.setGeometry(QtCore.QRect(180, 180, 911, 71))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(20)
-        self.text_1.setFont(font)
-        self.text_1.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.text_1.setObjectName("text_1")
-        self.text_1.setIndent(50)
-        self.n2_2 = QtWidgets.QLabel(self.Levels)
-        self.n2_2.setGeometry(QtCore.QRect(310, 320, 51, 51))
-        self.n2_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.n2_2.setAutoFillBackground(False)
-        self.n2_2.setStyleSheet("background-color: rgb(225, 175, 174);\n"
+        self.n3_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.n3_1.setObjectName("n3_1")
+
+        self.n4_1 = QtWidgets.QLabel(self.Levels)
+        self.n4_1.setGeometry(QtCore.QRect(430, 320, 51, 51))
+        self.n4_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.n4_1.setAutoFillBackground(False)
+        self.n4_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
                                 "font: 15pt \"Roboto\";\n"
                                 "border-radius: 5px;\n"
                                 "border: 1px solid rgb(100, 100, 100);")
-        self.n2_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.n2_2.setObjectName("n2_2")
-        self.let1_14 = QtWidgets.QLabel(self.Levels)
-        self.let1_14.setGeometry(QtCore.QRect(930, 380, 51, 51))
-        self.let1_14.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_14.setAutoFillBackground(False)
-        self.let1_14.setStyleSheet("background-color: rgb(173, 227, 176);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let1_14.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_14.setObjectName("let1_14")
-        self.ctrl_r_2 = QtWidgets.QLabel(self.Levels)
-        self.ctrl_r_2.setGeometry(QtCore.QRect(1020, 560, 61, 51))
-        self.ctrl_r_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.ctrl_r_2.setAutoFillBackground(False)
-        self.ctrl_r_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
-                                    "color: rgb(50, 50, 50);\n"
-                                    "font: 8pt \"Roboto\";\n"
-                                    "border-radius: 5px;\n"
-                                    "border: 1px solid rgb(100, 100, 100);")
-        self.ctrl_r_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.ctrl_r_2.setObjectName("ctrl_r_2")
-        self.slash_2 = QtWidgets.QLabel(self.Levels)
-        self.slash_2.setGeometry(QtCore.QRect(990, 380, 91, 51))
-        self.slash_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.slash_2.setAutoFillBackground(False)
-        self.slash_2.setStyleSheet("background-color: rgb(173, 227, 176);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.slash_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.slash_2.setObjectName("slash_2")
-        self.n6_2 = QtWidgets.QLabel(self.Levels)
-        self.n6_2.setGeometry(QtCore.QRect(550, 320, 51, 51))
-        self.n6_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.n6_2.setAutoFillBackground(False)
-        self.n6_2.setStyleSheet("background-color: rgb(173, 226, 222);\n"
+        self.n4_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.n4_1.setObjectName("n4_1")
+
+        self.n5_1 = QtWidgets.QLabel(self.Levels)
+        self.n5_1.setGeometry(QtCore.QRect(490, 320, 51, 51))
+        self.n5_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.n5_1.setAutoFillBackground(False)
+        self.n5_1.setStyleSheet("background-color: rgb(173, 226, 222);\n"
                                 "font: 15pt \"Roboto\";\n"
                                 "border-radius: 5px;\n"
                                 "border: 1px solid rgb(100, 100, 100);")
-        self.n6_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.n6_2.setObjectName("n6_2")
-        self.let2_19 = QtWidgets.QLabel(self.Levels)
-        self.let2_19.setGeometry(QtCore.QRect(840, 440, 51, 51))
-        self.let2_19.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_19.setAutoFillBackground(False)
-        self.let2_19.setStyleSheet("background-color: rgb(173, 227, 176);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let2_19.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_19.setObjectName("let2_19")
-        self.let1_21 = QtWidgets.QLabel(self.Levels)
-        self.let1_21.setGeometry(QtCore.QRect(870, 380, 51, 51))
-        self.let1_21.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_21.setAutoFillBackground(False)
-        self.let1_21.setStyleSheet("background-color: rgb(173, 227, 176);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let1_21.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_21.setObjectName("let1_21")
-        self.let3_18 = QtWidgets.QLabel(self.Levels)
-        self.let3_18.setGeometry(QtCore.QRect(880, 500, 51, 51))
-        self.let3_18.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let3_18.setAutoFillBackground(False)
-        self.let3_18.setStyleSheet("background-color: rgb(173, 227, 176);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let3_18.setAlignment(QtCore.Qt.AlignCenter)
-        self.let3_18.setObjectName("let3_18")
-        self.bg_2 = QtWidgets.QLabel(self.Levels)
-        self.bg_2.setGeometry(QtCore.QRect(170, 300, 931, 331))
-        self.bg_2.setStyleSheet("background-color: rgb(153, 180, 209);\n"
-                                "border-radius: 5px;")
-        self.bg_2.setText("")
-        self.bg_2.setObjectName("bg_2")
-        self.backspace_2 = QtWidgets.QLabel(self.Levels)
-        self.backspace_2.setGeometry(QtCore.QRect(970, 320, 111, 51))
-        self.backspace_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.backspace_2.setAutoFillBackground(False)
-        self.backspace_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+        self.n5_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.n5_1.setObjectName("n5_1")
+
+        self.n6_1 = QtWidgets.QLabel(self.Levels)
+        self.n6_1.setGeometry(QtCore.QRect(550, 320, 51, 51))
+        self.n6_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.n6_1.setAutoFillBackground(False)
+        self.n6_1.setStyleSheet("background-color: rgb(173, 226, 222);\n"
+                                "font: 15pt \"Roboto\";\n"
+                                "border-radius: 5px;\n"
+                                "border: 1px solid rgb(100, 100, 100);")
+        self.n6_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.n6_1.setObjectName("n6_1")
+
+        self.n7_1 = QtWidgets.QLabel(self.Levels)
+        self.n7_1.setGeometry(QtCore.QRect(610, 320, 51, 51))
+        self.n7_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.n7_1.setAutoFillBackground(False)
+        self.n7_1.setStyleSheet("background-color: rgb(223, 173, 226);\n"
+                                "font: 15pt \"Roboto\";\n"
+                                "border-radius: 5px;\n"
+                                "border: 1px solid rgb(100, 100, 100);")
+        self.n7_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.n7_1.setObjectName("n7_1")
+
+        self.n8_1 = QtWidgets.QLabel(self.Levels)
+        self.n8_1.setGeometry(QtCore.QRect(670, 320, 51, 51))
+        self.n8_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.n8_1.setAutoFillBackground(False)
+        self.n8_1.setStyleSheet("background-color: rgb(225, 175, 174);\n"
+                                "font: 15pt \"Roboto\";\n"
+                                "border-radius: 5px;\n"
+                                "border: 1px solid rgb(100, 100, 100);")
+        self.n8_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.n8_1.setObjectName("n8_1")
+
+        self.n9_1 = QtWidgets.QLabel(self.Levels)
+        self.n9_1.setGeometry(QtCore.QRect(730, 320, 51, 51))
+        self.n9_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.n9_1.setAutoFillBackground(False)
+        self.n9_1.setStyleSheet("background-color: rgb(226, 224, 173);\n"
+                                "font: 15pt \"Roboto\";\n"
+                                "border-radius: 5px;\n"
+                                "border: 1px solid rgb(100, 100, 100);")
+        self.n9_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.n9_1.setObjectName("n9_1")
+
+        self.n0_1 = QtWidgets.QLabel(self.Levels)
+        self.n0_1.setGeometry(QtCore.QRect(790, 320, 51, 51))
+        self.n0_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.n0_1.setAutoFillBackground(False)
+        self.n0_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                "font: 15pt \"Roboto\";\n"
+                                "border-radius: 5px;\n"
+                                "border: 1px solid rgb(100, 100, 100);")
+        self.n0_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.n0_1.setObjectName("n0_1")
+
+        self.dash_1 = QtWidgets.QLabel(self.Levels)
+        self.dash_1.setGeometry(QtCore.QRect(850, 320, 51, 51))
+        self.dash_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.dash_1.setAutoFillBackground(False)
+        self.dash_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                  "font: 15pt \"Roboto\";\n"
+                                  "border-radius: 5px;\n"
+                                  "border: 1px solid rgb(100, 100, 100);")
+        self.dash_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.dash_1.setObjectName("dash_1")
+
+        self.eq_1 = QtWidgets.QLabel(self.Levels)
+        self.eq_1.setGeometry(QtCore.QRect(910, 320, 51, 51))
+        self.eq_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.eq_1.setAutoFillBackground(False)
+        self.eq_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                "font: 15pt \"Roboto\";\n"
+                                "border-radius: 5px;\n"
+                                "border: 1px solid rgb(100, 100, 100);")
+        self.eq_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.eq_1.setObjectName("eq_1")
+
+        self.backspace_1 = QtWidgets.QLabel(self.Levels)
+        self.backspace_1.setGeometry(QtCore.QRect(970, 320, 111, 51))
+        self.backspace_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.backspace_1.setAutoFillBackground(False)
+        self.backspace_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
                                        "color: rgb(50, 50, 50);\n"
                                        "font: 8pt \"Roboto\";\n"
                                        "border-radius: 5px;\n"
                                        "border: 1px solid rgb(100, 100, 100);")
-        self.backspace_2.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
-        self.backspace_2.setIndent(10)
-        self.backspace_2.setObjectName("backspace_2")
-        self.let1_18 = QtWidgets.QLabel(self.Levels)
-        self.let1_18.setGeometry(QtCore.QRect(450, 380, 51, 51))
-        self.let1_18.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_18.setAutoFillBackground(False)
-        self.let1_18.setStyleSheet("background-color: rgb(173, 226, 222);\n"
+        self.backspace_1.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
+        self.backspace_1.setIndent(10)
+        self.backspace_1.setObjectName("backspace_1")
+
+        self.tab_1 = QtWidgets.QLabel(self.Levels)
+        self.tab_1.setGeometry(QtCore.QRect(190, 380, 71, 51))
+        self.tab_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.tab_1.setAutoFillBackground(False)
+        self.tab_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+                                 "color: rgb(50, 50, 50);\n"
+                                 "font: 8pt \"Roboto\";\n"
+                                 "border-radius: 5px;\n"
+                                 "border: 1px solid rgb(100, 100, 100);")
+        self.tab_1.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.tab_1.setObjectName("tab_1")
+        self.tab_1.setIndent(5)
+
+        self.let2_1 = QtWidgets.QLabel(self.Levels)
+        self.let2_1.setGeometry(QtCore.QRect(270, 380, 51, 51))
+        self.let2_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let2_1.setAutoFillBackground(False)
+        self.let2_1.setStyleSheet("background-color: rgb(225, 175, 174);\n"
+                                  "font: 15pt \"Roboto\";\n"
+                                  "border-radius: 5px;\n"
+                                  "border: 1px solid rgb(100, 100, 100);")
+        self.let2_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let2_1.setObjectName("let2_1")
+
+        self.let3_1 = QtWidgets.QLabel(self.Levels)
+        self.let3_1.setGeometry(QtCore.QRect(330, 380, 51, 51))
+        self.let3_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let3_1.setAutoFillBackground(False)
+        self.let3_1.setStyleSheet("background-color: rgb(226, 224, 173);\n"
+                                  "font: 15pt \"Roboto\";\n"
+                                  "border-radius: 5px;\n"
+                                  "border: 1px solid rgb(100, 100, 100);")
+        self.let3_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let3_1.setObjectName("let3_1")
+
+        self.let4_1 = QtWidgets.QLabel(self.Levels)
+        self.let4_1.setGeometry(QtCore.QRect(390, 380, 51, 51))
+        self.let4_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let4_1.setAutoFillBackground(False)
+        self.let4_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                  "font: 15pt \"Roboto\";\n"
+                                  "border-radius: 5px;\n"
+                                  "border: 1px solid rgb(100, 100, 100);")
+        self.let4_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let4_1.setObjectName("let4_1")
+
+        self.let5_1 = QtWidgets.QLabel(self.Levels)
+        self.let5_1.setGeometry(QtCore.QRect(450, 380, 51, 51))
+        self.let5_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let5_1.setAutoFillBackground(False)
+        self.let5_1.setStyleSheet("background-color: rgb(173, 226, 222);\n"
+                                  "font: 15pt \"Roboto\";\n"
+                                  "border-radius: 5px;\n"
+                                  "border: 1px solid rgb(100, 100, 100);")
+        self.let5_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let5_1.setObjectName("let5_1")
+
+        self.let6_1 = QtWidgets.QLabel(self.Levels)
+        self.let6_1.setGeometry(QtCore.QRect(510, 380, 51, 51))
+        self.let6_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let6_1.setAutoFillBackground(False)
+        self.let6_1.setStyleSheet("background-color: rgb(173, 226, 222);\n"
                                    "font: 15pt \"Roboto\";\n"
                                    "border-radius: 5px;\n"
                                    "border: 1px solid rgb(100, 100, 100);")
-        self.let1_18.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_18.setObjectName("let1_18")
-        self.let3_11 = QtWidgets.QLabel(self.Levels)
-        self.let3_11.setGeometry(QtCore.QRect(520, 500, 51, 51))
-        self.let3_11.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let3_11.setAutoFillBackground(False)
-        self.let3_11.setStyleSheet("background-color: rgb(173, 226, 222);\n"
+        self.let6_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let6_1.setObjectName("let6_1")
+
+        self.let7_1 = QtWidgets.QLabel(self.Levels)
+        self.let7_1.setGeometry(QtCore.QRect(570, 380, 51, 51))
+        self.let7_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let7_1.setAutoFillBackground(False)
+        self.let7_1.setStyleSheet("background-color: rgb(223, 173, 226);\n"
+                                  "font: 15pt \"Roboto\";\n"
+                                  "border-radius: 5px;\n"
+                                  "border: 1px solid rgb(100, 100, 100);")
+        self.let7_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let7_1.setObjectName("let7_1")
+
+        self.let8_1 = QtWidgets.QLabel(self.Levels)
+        self.let8_1.setGeometry(QtCore.QRect(630, 380, 51, 51))
+        self.let8_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let8_1.setAutoFillBackground(False)
+        self.let8_1.setStyleSheet("background-color: rgb(223, 173, 226);\n"
+                                  "font: 15pt \"Roboto\";\n"
+                                  "border-radius: 5px;\n"
+                                  "border: 1px solid rgb(100, 100, 100);")
+        self.let8_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let8_1.setObjectName("let8_1")
+
+        self.let9_1 = QtWidgets.QLabel(self.Levels)
+        self.let9_1.setGeometry(QtCore.QRect(690, 380, 51, 51))
+        self.let9_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let9_1.setAutoFillBackground(False)
+        self.let9_1.setStyleSheet("background-color: rgb(225, 175, 174);\n"
+                                  "font: 15pt \"Roboto\";\n"
+                                  "border-radius: 5px;\n"
+                                  "border: 1px solid rgb(100, 100, 100);")
+        self.let9_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let9_1.setObjectName("let9_1")
+
+        self.let10_1 = QtWidgets.QLabel(self.Levels)
+        self.let10_1.setGeometry(QtCore.QRect(750, 380, 51, 51))
+        self.let10_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let10_1.setAutoFillBackground(False)
+        self.let10_1.setStyleSheet("background-color: rgb(226, 224, 173);\n"
                                    "font: 15pt \"Roboto\";\n"
                                    "border-radius: 5px;\n"
                                    "border: 1px solid rgb(100, 100, 100);")
-        self.let3_11.setAlignment(QtCore.Qt.AlignCenter)
-        self.let3_11.setObjectName("let3_11")
-        self.let1_20 = QtWidgets.QLabel(self.Levels)
-        self.let1_20.setGeometry(QtCore.QRect(810, 380, 51, 51))
-        self.let1_20.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_20.setAutoFillBackground(False)
-        self.let1_20.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+        self.let10_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let10_1.setObjectName("let10_1")
+
+        self.let11_1 = QtWidgets.QLabel(self.Levels)
+        self.let11_1.setGeometry(QtCore.QRect(810, 380, 51, 51))
+        self.let11_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let11_1.setAutoFillBackground(False)
+        self.let11_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
                                    "font: 15pt \"Roboto\";\n"
                                    "border-radius: 5px;\n"
                                    "border: 1px solid rgb(100, 100, 100);")
-        self.let1_20.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_20.setObjectName("let1_20")
-        self.n3_2 = QtWidgets.QLabel(self.Levels)
-        self.n3_2.setGeometry(QtCore.QRect(370, 320, 51, 51))
-        self.n3_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.n3_2.setAutoFillBackground(False)
-        self.n3_2.setStyleSheet("background-color: rgb(226, 224, 173);\n"
-                                "font: 15pt \"Roboto\";\n"
-                                "border-radius: 5px;\n"
-                                "border: 1px solid rgb(100, 100, 100);")
-        self.n3_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.n3_2.setObjectName("n3_2")
-        self.caps_2 = QtWidgets.QLabel(self.Levels)
-        self.caps_2.setGeometry(QtCore.QRect(190, 440, 101, 51))
-        self.caps_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.caps_2.setAutoFillBackground(False)
-        self.caps_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+        self.let11_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let11_1.setObjectName("let11_1")
+
+        self.let12_1 = QtWidgets.QLabel(self.Levels)
+        self.let12_1.setGeometry(QtCore.QRect(870, 380, 51, 51))
+        self.let12_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let12_1.setAutoFillBackground(False)
+        self.let12_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let12_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let12_1.setObjectName("let12_1")
+
+        self.let13_1 = QtWidgets.QLabel(self.Levels)
+        self.let13_1.setGeometry(QtCore.QRect(930, 380, 51, 51))
+        self.let13_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let13_1.setAutoFillBackground(False)
+        self.let13_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let13_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let13_1.setObjectName("let13_1")
+
+        self.slash_1 = QtWidgets.QLabel(self.Levels)
+        self.slash_1.setGeometry(QtCore.QRect(990, 380, 91, 51))
+        self.slash_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.slash_1.setAutoFillBackground(False)
+        self.slash_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.slash_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.slash_1.setObjectName("slash_1")
+
+        self.caps_1 = QtWidgets.QLabel(self.Levels)
+        self.caps_1.setGeometry(QtCore.QRect(190, 440, 101, 51))
+        self.caps_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.caps_1.setAutoFillBackground(False)
+        self.caps_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
                                   "color: rgb(50, 50, 50);\n"
                                   "font: 8pt \"Roboto\";\n"
                                   "border-radius: 5px;\n"
                                   "border: 1px solid rgb(100, 100, 100);")
-        self.caps_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
-        self.caps_2.setIndent(10)
-        self.caps_2.setObjectName("caps_2")
-        self.n8_2 = QtWidgets.QLabel(self.Levels)
-        self.n8_2.setGeometry(QtCore.QRect(670, 320, 51, 51))
-        self.n8_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.n8_2.setAutoFillBackground(False)
-        self.n8_2.setStyleSheet("background-color: rgb(225, 175, 174);\n"
-                                "font: 15pt \"Roboto\";\n"
-                                "border-radius: 5px;\n"
-                                "border: 1px solid rgb(100, 100, 100);")
-        self.n8_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.n8_2.setObjectName("n8_2")
-        self.let2_22 = QtWidgets.QLabel(self.Levels)
-        self.let2_22.setGeometry(QtCore.QRect(900, 440, 51, 51))
-        self.let2_22.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let2_22.setAutoFillBackground(False)
-        self.let2_22.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+        self.caps_1.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.caps_1.setIndent(10)
+        self.caps_1.setObjectName("caps_1")
+
+        self.let14_1 = QtWidgets.QLabel(self.Levels)
+        self.let14_1.setGeometry(QtCore.QRect(300, 440, 51, 51))
+        self.let14_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let14_1.setAutoFillBackground(False)
+        self.let14_1.setStyleSheet("background-color: rgb(225, 175, 174);\n"
                                    "font: 15pt \"Roboto\";\n"
                                    "border-radius: 5px;\n"
                                    "border: 1px solid rgb(100, 100, 100);")
-        self.let2_22.setAlignment(QtCore.Qt.AlignCenter)
-        self.let2_22.setObjectName("let2_22")
-        self.time_label = QtWidgets.QLabel(self.Levels)
-        self.time_label.setGeometry(QtCore.QRect(600, 70, 91, 41))
-        self.time_label.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-                                      "border-radius: 10px;\n"
-                                      "font: 15pt \"Roboto\";")
-        self.time_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.time_label.setObjectName("time_label")
-        self.let1_24 = QtWidgets.QLabel(self.Levels)
-        self.let1_24.setGeometry(QtCore.QRect(390, 380, 51, 51))
-        self.let1_24.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let1_24.setAutoFillBackground(False)
-        self.let1_24.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+        self.let14_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let14_1.setObjectName("let14_1")
+
+        self.let15_1 = QtWidgets.QLabel(self.Levels)
+        self.let15_1.setGeometry(QtCore.QRect(360, 440, 51, 51))
+        self.let15_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let15_1.setAutoFillBackground(False)
+        self.let15_1.setStyleSheet("background-color: rgb(226, 224, 173);\n"
                                    "font: 15pt \"Roboto\";\n"
                                    "border-radius: 5px;\n"
                                    "border: 1px solid rgb(100, 100, 100);")
-        self.let1_24.setAlignment(QtCore.Qt.AlignCenter)
-        self.let1_24.setObjectName("let1_24")
-        self.let3_19 = QtWidgets.QLabel(self.Levels)
-        self.let3_19.setGeometry(QtCore.QRect(580, 500, 51, 51))
-        self.let3_19.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let3_19.setAutoFillBackground(False)
-        self.let3_19.setStyleSheet("background-color: rgb(173, 226, 222);\n"
+        self.let15_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let15_1.setObjectName("let15_1")
+
+        self.let16_1 = QtWidgets.QLabel(self.Levels)
+        self.let16_1.setGeometry(QtCore.QRect(420, 440, 51, 51))
+        self.let16_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let16_1.setAutoFillBackground(False)
+        self.let16_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
                                    "font: 15pt \"Roboto\";\n"
                                    "border-radius: 5px;\n"
                                    "border: 1px solid rgb(100, 100, 100);")
-        self.let3_19.setAlignment(QtCore.Qt.AlignCenter)
-        self.let3_19.setObjectName("let3_19")
-        self.shift_l_2 = QtWidgets.QLabel(self.Levels)
-        self.shift_l_2.setGeometry(QtCore.QRect(940, 500, 141, 51))
-        self.shift_l_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.shift_l_2.setAutoFillBackground(False)
-        self.shift_l_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+        self.let16_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let16_1.setObjectName("let16_1")
+
+        self.let17_1 = QtWidgets.QLabel(self.Levels)
+        self.let17_1.setGeometry(QtCore.QRect(480, 440, 51, 51))
+        self.let17_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let17_1.setAutoFillBackground(False)
+        self.let17_1.setStyleSheet("background-color: rgb(173, 226, 222);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let17_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let17_1.setObjectName("let17_1")
+
+        self.let18_1 = QtWidgets.QLabel(self.Levels)
+        self.let18_1.setGeometry(QtCore.QRect(540, 440, 51, 51))
+        self.let18_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let18_1.setAutoFillBackground(False)
+        self.let18_1.setStyleSheet("background-color: rgb(173, 226, 222);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let18_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let18_1.setObjectName("let18_1")
+
+        self.let19_1 = QtWidgets.QLabel(self.Levels)
+        self.let19_1.setGeometry(QtCore.QRect(600, 440, 51, 51))
+        self.let19_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let19_1.setAutoFillBackground(False)
+        self.let19_1.setStyleSheet("background-color: rgb(223, 173, 226);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let19_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let19_1.setObjectName("let19_1")
+
+        self.let20_1 = QtWidgets.QLabel(self.Levels)
+        self.let20_1.setGeometry(QtCore.QRect(660, 440, 51, 51))
+        self.let20_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let20_1.setAutoFillBackground(False)
+        self.let20_1.setStyleSheet("background-color: rgb(223, 173, 226);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let20_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let20_1.setObjectName("let20_1")
+
+        self.let21_1 = QtWidgets.QLabel(self.Levels)
+        self.let21_1.setGeometry(QtCore.QRect(720, 440, 51, 51))
+        self.let21_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let21_1.setAutoFillBackground(False)
+        self.let21_1.setStyleSheet("background-color: rgb(225, 175, 174);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let21_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let21_1.setObjectName("let21_1")
+
+        self.let22_1 = QtWidgets.QLabel(self.Levels)
+        self.let22_1.setGeometry(QtCore.QRect(780, 440, 51, 51))
+        self.let22_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let22_1.setAutoFillBackground(False)
+        self.let22_1.setStyleSheet("background-color: rgb(226, 224, 173);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let22_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let22_1.setObjectName("let22_1")
+
+        self.let23_1 = QtWidgets.QLabel(self.Levels)
+        self.let23_1.setGeometry(QtCore.QRect(840, 440, 51, 51))
+        self.let23_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let23_1.setAutoFillBackground(False)
+        self.let23_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let23_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let23_1.setObjectName("let23_1")
+
+        self.let24_1 = QtWidgets.QLabel(self.Levels)
+        self.let24_1.setGeometry(QtCore.QRect(900, 440, 51, 51))
+        self.let24_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let24_1.setAutoFillBackground(False)
+        self.let24_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let24_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let24_1.setObjectName("let24_1")
+
+        self.enter_1 = QtWidgets.QLabel(self.Levels)
+        self.enter_1.setGeometry(QtCore.QRect(960, 440, 121, 51))
+        self.enter_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.enter_1.setAutoFillBackground(False)
+        self.enter_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+                                   "color: rgb(50, 50, 50);\n"
+                                   "font: 8pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.enter_1.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
+        self.enter_1.setIndent(10)
+        self.enter_1.setObjectName("enter_1")
+
+        self.l_shift_1 = QtWidgets.QLabel(self.Levels)
+        self.l_shift_1.setGeometry(QtCore.QRect(190, 500, 141, 51))
+        self.l_shift_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.l_shift_1.setAutoFillBackground(False)
+        self.l_shift_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
                                      "color: rgb(50, 50, 50);\n"
                                      "font: 8pt \"Roboto\";\n"
                                      "border-radius: 5px;\n"
                                      "border: 1px solid rgb(100, 100, 100);")
-        self.shift_l_2.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
-        self.shift_l_2.setIndent(10)
-        self.shift_l_2.setObjectName("shift_l_2")
-        self.ctrl_l_2 = QtWidgets.QLabel(self.Levels)
-        self.ctrl_l_2.setGeometry(QtCore.QRect(190, 560, 71, 51))
-        self.ctrl_l_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.ctrl_l_2.setAutoFillBackground(False)
-        self.ctrl_l_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+        self.l_shift_1.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.l_shift_1.setIndent(10)
+        self.l_shift_1.setObjectName("l_shift_1")
+
+        self.let25_1 = QtWidgets.QLabel(self.Levels)
+        self.let25_1.setGeometry(QtCore.QRect(340, 500, 51, 51))
+        self.let25_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let25_1.setAutoFillBackground(False)
+        self.let25_1.setStyleSheet("background-color: rgb(225, 175, 174);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let25_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let25_1.setObjectName("let25_1")
+
+        self.let26_1 = QtWidgets.QLabel(self.Levels)
+        self.let26_1.setGeometry(QtCore.QRect(400, 500, 51, 51))
+        self.let26_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let26_1.setAutoFillBackground(False)
+        self.let26_1.setStyleSheet("background-color: rgb(226, 224, 173);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let26_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let26_1.setObjectName("let26_1")
+
+        self.let27_1 = QtWidgets.QLabel(self.Levels)
+        self.let27_1.setGeometry(QtCore.QRect(460, 500, 51, 51))
+        self.let27_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let27_1.setAutoFillBackground(False)
+        self.let27_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let27_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let27_1.setObjectName("let27_1")
+
+        self.let28_1 = QtWidgets.QLabel(self.Levels)
+        self.let28_1.setGeometry(QtCore.QRect(520, 500, 51, 51))
+        self.let28_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let28_1.setAutoFillBackground(False)
+        self.let28_1.setStyleSheet("background-color: rgb(173, 226, 222);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let28_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let28_1.setObjectName("let28_1")
+
+        self.let29_1 = QtWidgets.QLabel(self.Levels)
+        self.let29_1.setGeometry(QtCore.QRect(580, 500, 51, 51))
+        self.let29_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let29_1.setAutoFillBackground(False)
+        self.let29_1.setStyleSheet("background-color: rgb(173, 226, 222);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let29_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let29_1.setObjectName("let29_1")
+
+        self.let30_1 = QtWidgets.QLabel(self.Levels)
+        self.let30_1.setGeometry(QtCore.QRect(640, 500, 51, 51))
+        self.let30_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let30_1.setAutoFillBackground(False)
+        self.let30_1.setStyleSheet("background-color: rgb(223, 173, 226);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let30_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let30_1.setObjectName("let30_1")
+
+        self.let31_1 = QtWidgets.QLabel(self.Levels)
+        self.let31_1.setGeometry(QtCore.QRect(700, 500, 51, 51))
+        self.let31_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let31_1.setAutoFillBackground(False)
+        self.let31_1.setStyleSheet("background-color: rgb(223, 173, 226);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let31_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let31_1.setObjectName("let31_1")
+
+        self.let32_1 = QtWidgets.QLabel(self.Levels)
+        self.let32_1.setGeometry(QtCore.QRect(760, 500, 51, 51))
+        self.let32_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let32_1.setAutoFillBackground(False)
+        self.let32_1.setStyleSheet("background-color: rgb(225, 175, 174);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let32_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let32_1.setObjectName("let32_1")
+
+        self.let33_1 = QtWidgets.QLabel(self.Levels)
+        self.let33_1.setGeometry(QtCore.QRect(820, 500, 51, 51))
+        self.let33_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.let33_1.setAutoFillBackground(False)
+        self.let33_1.setStyleSheet("background-color: rgb(226, 224, 173);\n"
+                                   "font: 15pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.let33_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.let33_1.setObjectName("let33_1")
+
+        self.dot_1 = QtWidgets.QLabel(self.Levels)
+        self.dot_1.setGeometry(QtCore.QRect(880, 500, 51, 51))
+        self.dot_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.dot_1.setAutoFillBackground(False)
+        self.dot_1.setStyleSheet("background-color: rgb(173, 227, 176);\n"
+                                 "font: 15pt \"Roboto\";\n"
+                                 "border-radius: 5px;\n"
+                                 "border: 1px solid rgb(100, 100, 100);")
+        self.dot_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.dot_1.setObjectName("dot_1")
+
+        self.r_shift_1 = QtWidgets.QLabel(self.Levels)
+        self.r_shift_1.setGeometry(QtCore.QRect(940, 500, 141, 51))
+        self.r_shift_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.r_shift_1.setAutoFillBackground(False)
+        self.r_shift_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+                                     "color: rgb(50, 50, 50);\n"
+                                     "font: 8pt \"Roboto\";\n"
+                                     "border-radius: 5px;\n"
+                                     "border: 1px solid rgb(100, 100, 100);")
+        self.r_shift_1.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
+        self.r_shift_1.setIndent(10)
+        self.r_shift_1.setObjectName("r_shift_1")
+
+        self.l_ctrl_1 = QtWidgets.QLabel(self.Levels)
+        self.l_ctrl_1.setGeometry(QtCore.QRect(190, 560, 61, 51))
+        self.l_ctrl_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.l_ctrl_1.setAutoFillBackground(False)
+        self.l_ctrl_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
                                     "color: rgb(50, 50, 50);\n"
                                     "font: 8pt \"Roboto\";\n"
                                     "border-radius: 5px;\n"
                                     "border: 1px solid rgb(100, 100, 100);")
-        self.ctrl_l_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.ctrl_l_2.setObjectName("ctrl_l_2")
-        self.enter_2 = QtWidgets.QLabel(self.Levels)
-        self.enter_2.setGeometry(QtCore.QRect(960, 440, 121, 51))
-        self.enter_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.enter_2.setAutoFillBackground(False)
-        self.enter_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+        self.l_ctrl_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.l_ctrl_1.setObjectName("l_ctrl_1")
+
+        self.l_win_1 = QtWidgets.QLabel(self.Levels)
+        self.l_win_1.setGeometry(QtCore.QRect(270, 560, 61, 51))
+        self.l_win_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.l_win_1.setAutoFillBackground(False)
+        self.l_win_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
                                    "color: rgb(50, 50, 50);\n"
                                    "font: 8pt \"Roboto\";\n"
                                    "border-radius: 5px;\n"
                                    "border: 1px solid rgb(100, 100, 100);")
-        self.enter_2.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
-        self.enter_2.setIndent(10)
-        self.enter_2.setObjectName("enter_2")
-        self.let3_13 = QtWidgets.QLabel(self.Levels)
-        self.let3_13.setGeometry(QtCore.QRect(460, 500, 51, 51))
-        self.let3_13.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.let3_13.setAutoFillBackground(False)
-        self.let3_13.setStyleSheet("background-color: rgb(173, 227, 176);\n"
-                                   "font: 15pt \"Roboto\";\n"
-                                   "border-radius: 5px;\n"
-                                   "border: 1px solid rgb(100, 100, 100);")
-        self.let3_13.setAlignment(QtCore.Qt.AlignCenter)
-        self.let3_13.setObjectName("let3_13")
-        self.win_l_2 = QtWidgets.QLabel(self.Levels)
-        self.win_l_2.setGeometry(QtCore.QRect(270, 560, 61, 51))
-        self.win_l_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.win_l_2.setAutoFillBackground(False)
-        self.win_l_2.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+        self.l_win_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.l_win_1.setObjectName("l_win_1")
+
+        self.l_alt_1 = QtWidgets.QLabel(self.Levels)
+        self.l_alt_1.setGeometry(QtCore.QRect(340, 560, 61, 51))
+        self.l_alt_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.l_alt_1.setAutoFillBackground(False)
+        self.l_alt_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
                                    "color: rgb(50, 50, 50);\n"
                                    "font: 8pt \"Roboto\";\n"
                                    "border-radius: 5px;\n"
                                    "border: 1px solid rgb(100, 100, 100);")
-        self.win_l_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.win_l_2.setObjectName("win_l_2")
+        self.l_alt_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.l_alt_1.setObjectName("l_alt_1")
+
+        self.space_1 = QtWidgets.QLabel(self.Levels)
+        self.space_1.setGeometry(QtCore.QRect(410, 560, 391, 51))
+        self.space_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.space_1.setAutoFillBackground(False)
+        self.space_1.setStyleSheet("background-color: rgb(175, 175, 225);\n"
+                                   "font: 10pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.space_1.setText("")
+        self.space_1.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.space_1.setObjectName("space_1")
+
+        self.r_alt_1 = QtWidgets.QLabel(self.Levels)
+        self.r_alt_1.setGeometry(QtCore.QRect(810, 560, 61, 51))
+        self.r_alt_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.r_alt_1.setAutoFillBackground(False)
+        self.r_alt_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+                                   "color: rgb(50, 50, 50);\n"
+                                   "font: 8pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.r_alt_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.r_alt_1.setObjectName("r_alt_1")
+
+        self.r_win_1 = QtWidgets.QLabel(self.Levels)
+        self.r_win_1.setGeometry(QtCore.QRect(880, 560, 61, 51))
+        self.r_win_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.r_win_1.setAutoFillBackground(False)
+        self.r_win_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+                                   "color: rgb(50, 50, 50);\n"
+                                   "font: 8pt \"Roboto\";\n"
+                                   "border-radius: 5px;\n"
+                                   "border: 1px solid rgb(100, 100, 100);")
+        self.r_win_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.r_win_1.setObjectName("r_win_1")
+
+        self.menu_1 = QtWidgets.QLabel(self.Levels)
+        self.menu_1.setGeometry(QtCore.QRect(950, 560, 61, 51))
+        self.menu_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.menu_1.setAutoFillBackground(False)
+        self.menu_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+                                  "color: rgb(50, 50, 50);\n"
+                                  "font: 8pt \"Roboto\";\n"
+                                  "border-radius: 5px;\n"
+                                  "border: 1px solid rgb(100, 100, 100);")
+        self.menu_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.menu_1.setObjectName("menu_1")
+
+        self.r_ctrl_1 = QtWidgets.QLabel(self.Levels)
+        self.r_ctrl_1.setGeometry(QtCore.QRect(1020, 560, 61, 51))
+        self.r_ctrl_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.r_ctrl_1.setAutoFillBackground(False)
+        self.r_ctrl_1.setStyleSheet("background-color: rgb(215, 215, 215);\n"
+                                    "color: rgb(50, 50, 50);\n"
+                                    "font: 8pt \"Roboto\";\n"
+                                    "border-radius: 5px;\n"
+                                    "border: 1px solid rgb(100, 100, 100);")
+        self.r_ctrl_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.r_ctrl_1.setObjectName("r_ctrl_1")
+
+        self.lvl_label = QtWidgets.QLabel(self.Levels)
+        self.lvl_label.setGeometry(QtCore.QRect(-20, -10, 121, 41))
+        self.lvl_label.setStyleSheet("background-color: rgba(188, 255, 199, 255);\n"
+                                 "background-color: rgb(156, 212, 165);\n"
+                                 "font: 10pt \"Montserrat Medium\";\n"
+                                 "border-radius: 10px;")
+        self.lvl_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter)
+        self.lvl_label.setIndent(5)
+        self.lvl_label.setObjectName("lvl_label")
+
+        self.inp_1 = QtWidgets.QLabel(self.Levels)
+        self.inp_1.setGeometry(QtCore.QRect(180, 180, 911, 71))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(20)
+        self.inp_1.setFont(font)
+        self.inp_1.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.inp_1.setObjectName("inp_1")
+        self.inp_1.setIndent(50)
+
+        self.bg_1 = QtWidgets.QLabel(self.Levels)
+        self.bg_1.setGeometry(QtCore.QRect(170, 300, 931, 331))
+        self.bg_1.setStyleSheet("background-color: rgb(153, 180, 209);\n"
+                                "border-radius: 5px;")
+        self.bg_1.setText("")
+        self.bg_1.setObjectName("bg_1")
+
+        self.time_label_1 = QtWidgets.QLabel(self.Levels)
+        self.time_label_1.setGeometry(QtCore.QRect(600, 70, 91, 41))
+        self.time_label_1.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+                                      "border-radius: 10px;\n"
+                                      "font: 15pt \"Roboto\";")
+        self.time_label_1.setAlignment(QtCore.Qt.AlignCenter)
+        self.time_label_1.setObjectName("time_label_1")
 
         self.home_icon1.raise_()
         self.home_icon2.raise_()
-        self.bg_2.raise_()
-        self.let1_23.raise_()
-        self.let2_14.raise_()
-        self.label.raise_()
-        self.let2_17.raise_()
-        self.let1_17.raise_()
-        self.let1_15.raise_()
-        self.n9_2.raise_()
-        self.let2_18.raise_()
-        self.n7_2.raise_()
-        self.let1_16.raise_()
-        self.eq_2.raise_()
-        self.space_2.raise_()
-        self.tab_2.raise_()
-        self.menu_2.raise_()
-        self.let2_20.raise_()
-        self.let3_17.raise_()
-        self.let3_16.raise_()
-        self.shift_r_2.raise_()
-        self.let1_22.raise_()
-        self.dash_2.raise_()
-        self.let1_13.raise_()
-        self.let3_20.raise_()
-        self.let3_14.raise_()
-        self.let2_13.raise_()
-        self.alt_l_2.raise_()
-        self.let1_19.raise_()
-        self.n5_2.raise_()
-        self.let2_12.raise_()
-        self.let2_15.raise_()
-        self.let3_15.raise_()
-        self.alt_r_2.raise_()
-        self.win_r_2.raise_()
-        self.yo_2.raise_()
-        self.let2_16.raise_()
-        self.let2_21.raise_()
-        self.n1_2.raise_()
-        self.n4_2.raise_()
-        self.let3_12.raise_()
-        self.n0_2.raise_()
-        self.text_1.raise_()
-        self.n2_2.raise_()
-        self.let1_14.raise_()
-        self.ctrl_r_2.raise_()
-        self.slash_2.raise_()
-        self.n6_2.raise_()
-        self.let2_19.raise_()
-        self.let1_21.raise_()
-        self.let3_18.raise_()
-        self.backspace_2.raise_()
-        self.let1_18.raise_()
-        self.let3_11.raise_()
-        self.let1_20.raise_()
-        self.n3_2.raise_()
-        self.caps_2.raise_()
-        self.n8_2.raise_()
-        self.let2_22.raise_()
-        self.let1_24.raise_()
-        self.let3_19.raise_()
-        self.shift_l_2.raise_()
-        self.ctrl_l_2.raise_()
-        self.enter_2.raise_()
-        self.let3_13.raise_()
-        self.win_l_2.raise_()
-        self.time_label.raise_()
-        # self.button_start.raise_()
+
+        self.lvl_label.raise_()
+        self.time_label_1.raise_()
+        self.inp_1.raise_()
+
+        self.bg_1.raise_()
+
+        self.let1_1.raise_()
+        self.n1_1.raise_()
+        self.n2_1.raise_()
+        self.n3_1.raise_()
+        self.n4_1.raise_()
+        self.n5_1.raise_()
+        self.n6_1.raise_()
+        self.n7_1.raise_()
+        self.n9_1.raise_()
+        self.n8_1.raise_()
+        self.n0_1.raise_()
+        self.dash_1.raise_()
+        self.eq_1.raise_()
+        self.backspace_1.raise_()
+
+        self.tab_1.raise_()
+        self.let2_1.raise_()
+        self.let3_1.raise_()
+        self.let4_1.raise_()
+        self.let5_1.raise_()
+        self.let6_1.raise_()
+        self.let7_1.raise_()
+        self.let8_1.raise_()
+        self.let9_1.raise_()
+        self.let10_1.raise_()
+        self.let11_1.raise_()
+        self.let12_1.raise_()
+        self.let13_1.raise_()
+        self.slash_1.raise_()
+
+        self.caps_1.raise_()
+        self.let14_1.raise_()
+        self.let15_1.raise_()
+        self.let16_1.raise_()
+        self.let17_1.raise_()
+        self.let18_1.raise_()
+        self.let19_1.raise_()
+        self.let20_1.raise_()
+        self.let21_1.raise_()
+        self.let22_1.raise_()
+        self.let23_1.raise_()
+        self.let24_1.raise_()
+        self.enter_1.raise_()
+
+        self.l_shift_1.raise_()
+        self.let25_1.raise_()
+        self.let26_1.raise_()
+        self.let27_1.raise_()
+        self.let28_1.raise_()
+        self.let29_1.raise_()
+        self.let30_1.raise_()
+        self.let31_1.raise_()
+        self.let32_1.raise_()
+        self.let33_1.raise_()
+        self.dot_1.raise_()
+        self.r_shift_1.raise_()
+
+        self.l_ctrl_1.raise_()
+        self.l_win_1.raise_()
+        self.l_alt_1.raise_()
+        self.space_1.raise_()
+        self.r_alt_1.raise_()
+        self.r_win_1.raise_()
+        self.menu_1.raise_()
+        self.r_ctrl_1.raise_()
+
+
+
         self.stackedWidget.addWidget(self.Levels)
 
         self.Exercise = QtWidgets.QWidget()
@@ -1190,11 +1251,11 @@ class Ui_MainWindow(object):
         self.home_icon3.setObjectName("home_icon")
         self.home_icon3.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
 
-        self.label_8 = QtWidgets.QLabel(self.Exercise)
-        self.label_8.setGeometry(QtCore.QRect(510, 50, 261, 61))
-        self.label_8.setStyleSheet("font: 30pt \"Montserrat Medium\";\n"
+        self.train = QtWidgets.QLabel(self.Exercise)
+        self.train.setGeometry(QtCore.QRect(510, 50, 261, 61))
+        self.train.setStyleSheet("font: 30pt \"Montserrat Medium\";\n"
                                    "background-color:  rgba(188, 255, 199, 0)")
-        self.label_8.setObjectName("label_8")
+        self.train.setObjectName("label_8")
         self.time = QtWidgets.QPushButton(self.Exercise)
         self.time.setFocusPolicy(Qt.NoFocus)
         self.time.setGeometry(QtCore.QRect(60, 350, 341, 121))
@@ -1213,21 +1274,6 @@ class Ui_MainWindow(object):
                                 "    background-color: rgb(229, 182, 166);       \n"
                                 "}")
         self.time.setObjectName("time")
-        self.comboBox = QtWidgets.QComboBox(self.Exercise)
-        self.comboBox.setGeometry(QtCore.QRect(510, 200, 261, 31))
-        self.comboBox.setStyleSheet(" border-radius: 5px;\n"
-                                    "background-color: white;\n"
-                                    "font: 10pt \"Roboto\";")
-        self.comboBox.setEditable(False)
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.choose_1 = QtWidgets.QLabel(self.Exercise)
-        self.choose_1.setGeometry(QtCore.QRect(520, 150, 231, 31))
-        self.choose_1.setStyleSheet("background-color: rgba(0, 0, 0, 0);\n"
-                                    "font: 11pt \"Roboto\";")
-        self.choose_1.setObjectName("choose_1")
         self.story = QtWidgets.QPushButton(self.Exercise)
         self.story.setFocusPolicy(Qt.NoFocus)
         self.story.setGeometry(QtCore.QRect(470, 350, 341, 121))
@@ -1246,11 +1292,11 @@ class Ui_MainWindow(object):
                                  "    background-color: rgb(229, 182, 166);       \n"
                                  "}")
         self.story.setObjectName("story")
-        self.inf = QtWidgets.QPushButton(self.Exercise)
-        self.inf.setFocusPolicy(Qt.NoFocus)
-        self.inf.setGeometry(QtCore.QRect(880, 350, 341, 121))
-        self.inf.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.inf.setStyleSheet("QPushButton{\n"
+        self.hear = QtWidgets.QPushButton(self.Exercise)
+        self.hear.setFocusPolicy(Qt.NoFocus)
+        self.hear.setGeometry(QtCore.QRect(880, 350, 341, 121))
+        self.hear.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.hear.setStyleSheet("QPushButton{\n"
                                "    background-color: rgb(255, 203, 185);\n"
                                "    font: 15pt \"Montserrat Medium\";\n"
                                "    border-radius: 20px;\n"
@@ -1263,99 +1309,234 @@ class Ui_MainWindow(object):
                                "QPushButton:pressed {\n"
                                "    background-color: rgb(229, 182, 166);       \n"
                                "}")
-        self.inf.setObjectName("inf")
+        self.hear.setObjectName("inf")
         self.stackedWidget.addWidget(self.Exercise)
+
+        self.Stories = QtWidgets.QWidget()
+        self.Stories.setStyleSheet(
+            "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(188, 255, 199, 255), stop:1 rgba(174, 231, 255, 255));")
+        self.Learning.setObjectName("Learning")
+        self.label_6 = QtWidgets.QLabel(self.Stories)
+        self.label_6.setGeometry(QtCore.QRect(530, 60, 221, 61))
+        self.label_6.setStyleSheet("font: 30pt \"Montserrat Medium\";\n"
+                                   "background-color:  rgba(188, 255, 199, 0)")
+        self.label_6.setObjectName("label_6")
+
+        icon_h = QtGui.QIcon()
+        icon_h.addPixmap(QtGui.QPixmap("img/home.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+        icon_m = QtGui.QIcon()
+        icon_m.addPixmap(QtGui.QPixmap("img/menu.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+        self.home_icon1 = QtWidgets.QPushButton(self.Stories)
+        self.home_icon1.setFocusPolicy(Qt.NoFocus)
+        self.home_icon1.setGeometry(QtCore.QRect(30, 40, 60, 60))
+        self.home_icon1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.home_icon1.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n")
+        self.home_icon1.setIcon(icon_h)
+        self.home_icon1.setIconSize(QtCore.QSize(50, 50))
+        self.home_icon1.setObjectName("home_icon")
+        self.home_icon1.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+
+        self.st1 = QtWidgets.QPushButton(self.Stories)
+        self.st1.setFocusPolicy(Qt.NoFocus)
+        self.st1.setGeometry(QtCore.QRect(60, 200, 220, 150))
+        self.st1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.st1.setStyleSheet("QPushButton{\n"
+                                 "    background-color: rgb(255, 203, 185);\n"
+                                 "    font: 15pt \"Montserrat Medium\";\n"
+                                 "    border-radius: 20px;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:hover {\n"
+                                 "    font-size: 17pt;   \n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:pressed {\n"
+                                 "    background-color: rgb(229, 182, 166);       \n"
+                                 "}")
+        self.st1.setObjectName("st1")
+
+        self.st2 = QtWidgets.QPushButton(self.Stories)
+        self.st2.setFocusPolicy(Qt.NoFocus)
+        self.st2.setGeometry(QtCore.QRect(295, 200, 220, 150))
+        self.st2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.st2.setStyleSheet("QPushButton{\n"
+                               "    background-color: rgb(255, 203, 185);\n"
+                               "    font: 15pt \"Montserrat Medium\";\n"
+                               "    border-radius: 20px;\n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:hover {\n"
+                               "    font-size: 17pt;   \n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:pressed {\n"
+                               "    background-color: rgb(229, 182, 166);       \n"
+                               "}")
+        self.st2.setObjectName("st2")
+
+        self.st3 = QtWidgets.QPushButton(self.Stories)
+        self.st3.setFocusPolicy(Qt.NoFocus)
+        self.st3.setGeometry(QtCore.QRect(530, 200, 220, 150))
+        self.st3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.st3.setStyleSheet("QPushButton{\n"
+                               "    background-color: rgb(255, 203, 185);\n"
+                               "    font: 15pt \"Montserrat Medium\";\n"
+                               "    border-radius: 20px;\n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:hover {\n"
+                               "    font-size: 17pt;   \n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:pressed {\n"
+                               "    background-color: rgb(229, 182, 166);       \n"
+                               "}")
+        self.st3.setObjectName("st3")
+
+        self.st4 = QtWidgets.QPushButton(self.Stories)
+        self.st4.setFocusPolicy(Qt.NoFocus)
+        self.st4.setGeometry(QtCore.QRect(765, 200, 220, 150))
+        self.st4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.st4.setStyleSheet("QPushButton{\n"
+                               "    background-color: rgb(255, 203, 185);\n"
+                               "    font: 15pt \"Montserrat Medium\";\n"
+                               "    border-radius: 20px;\n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:hover {\n"
+                               "    font-size: 17pt;   \n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:pressed {\n"
+                               "    background-color: rgb(229, 182, 166);       \n"
+                               "}")
+        self.st4.setObjectName("st4")
+
+        self.st5 = QtWidgets.QPushButton(self.Stories)
+        self.st5.setFocusPolicy(Qt.NoFocus)
+        self.st5.setGeometry(QtCore.QRect(1000, 200, 220, 150))
+        self.st5.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.st5.setStyleSheet("QPushButton{\n"
+                               "    background-color: rgb(255, 203, 185);\n"
+                               "    font: 15pt \"Montserrat Medium\";\n"
+                               "    border-radius: 20px;\n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:hover {\n"
+                               "    font-size: 17pt;   \n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:pressed {\n"
+                               "    background-color: rgb(229, 182, 166);       \n"
+                               "}")
+        self.st5.setObjectName("st5")
+
+        self.st6 = QtWidgets.QPushButton(self.Stories)
+        self.st6.setFocusPolicy(Qt.NoFocus)
+        self.st6.setGeometry(QtCore.QRect(60, 400, 220, 150))
+        self.st6.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.st6.setStyleSheet("QPushButton{\n"
+                               "    background-color: rgb(255, 203, 185);\n"
+                               "    font: 15pt \"Montserrat Medium\";\n"
+                               "    border-radius: 20px;\n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:hover {\n"
+                               "    font-size: 17pt;   \n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:pressed {\n"
+                               "    background-color: rgb(229, 182, 166);       \n"
+                               "}")
+        self.st6.setObjectName("st6")
+
+        self.st7 = QtWidgets.QPushButton(self.Stories)
+        self.st7.setFocusPolicy(Qt.NoFocus)
+        self.st7.setGeometry(QtCore.QRect(295, 400, 220, 150))
+        self.st7.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.st7.setStyleSheet("QPushButton{\n"
+                               "    background-color: rgb(255, 203, 185);\n"
+                               "    font: 15pt \"Montserrat Medium\";\n"
+                               "    border-radius: 20px;\n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:hover {\n"
+                               "    font-size: 17pt;   \n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:pressed {\n"
+                               "    background-color: rgb(229, 182, 166);       \n"
+                               "}")
+        self.st7.setObjectName("st7")
+
+        self.st8 = QtWidgets.QPushButton(self.Stories)
+        self.st8.setFocusPolicy(Qt.NoFocus)
+        self.st8.setGeometry(QtCore.QRect(530, 400, 220, 150))
+        self.st8.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.st8.setStyleSheet("QPushButton{\n"
+                               "    background-color: rgb(255, 203, 185);\n"
+                               "    font: 15pt \"Montserrat Medium\";\n"
+                               "    border-radius: 20px;\n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:hover {\n"
+                               "    font-size: 17pt;   \n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:pressed {\n"
+                               "    background-color: rgb(229, 182, 166);       \n"
+                               "}")
+        self.st8.setObjectName("st8")
+
+        self.st9 = QtWidgets.QPushButton(self.Stories)
+        self.st9.setFocusPolicy(Qt.NoFocus)
+        self.st9.setGeometry(QtCore.QRect(765, 400, 220, 150))
+        self.st9.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.st9.setStyleSheet("QPushButton{\n"
+                               "    background-color: rgb(255, 203, 185);\n"
+                               "    font: 15pt \"Montserrat Medium\";\n"
+                               "    border-radius: 20px;\n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:hover {\n"
+                               "    font-size: 17pt;   \n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:pressed {\n"
+                               "    background-color: rgb(229, 182, 166);       \n"
+                               "}")
+        self.st9.setObjectName("st9")
+
+        self.st10 = QtWidgets.QPushButton(self.Stories)
+        self.st10.setFocusPolicy(Qt.NoFocus)
+        self.st10.setGeometry(QtCore.QRect(1000, 400, 220, 150))
+        self.st10.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.st10.setStyleSheet("QPushButton{\n"
+                               "    background-color: rgb(255, 203, 185);\n"
+                               "    font: 15pt \"Montserrat Medium\";\n"
+                               "    border-radius: 20px;\n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:hover {\n"
+                               "    font-size: 17pt;   \n"
+                               "}\n"
+                               "\n"
+                               "QPushButton:pressed {\n"
+                               "    background-color: rgb(229, 182, 166);       \n"
+                               "}")
+        self.st10.setObjectName("st10")
+
+        self.stackedWidget.addWidget(self.Stories)
+
+
 
         self.Games = QtWidgets.QWidget()
         self.Games.setStyleSheet(
             "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(188, 255, 199, 255), stop:1 rgba(174, 231, 255, 255));")
         self.Games.setObjectName("Games")
 
-        self.home_icon4 = QtWidgets.QPushButton(self.Games)
-        self.home_icon4.setFocusPolicy(Qt.NoFocus)
-        self.home_icon4.setGeometry(QtCore.QRect(30, 40, 60, 60))
-        self.home_icon4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.home_icon4.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n""")
-        self.home_icon4.setIcon(icon_h)
-        self.home_icon4.setIconSize(QtCore.QSize(50, 50))
-        self.home_icon4.setObjectName("home_icon")
-        self.home_icon4.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-
-        self.label_9 = QtWidgets.QLabel(self.Games)
-        self.label_9.setGeometry(QtCore.QRect(580, 50, 121, 61))
-        self.label_9.setStyleSheet("font: 30pt \"Montserrat Medium\";\n"
-                                   "background-color:  rgba(188, 255, 199, 0)")
-        self.label_9.setObjectName("label_9")
-        self.comboBox_2 = QtWidgets.QComboBox(self.Games)
-        self.comboBox_2.setGeometry(QtCore.QRect(510, 200, 261, 31))
-        self.comboBox_2.setStyleSheet(" border-radius: 5px;\n"
-                                      "background-color: white;\n"
-                                      "font: 10pt \"Roboto\";")
-        self.comboBox_2.setEditable(False)
-        self.comboBox_2.setObjectName("comboBox_2")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.choose_2 = QtWidgets.QLabel(self.Games)
-        self.choose_2.setGeometry(QtCore.QRect(530, 150, 231, 31))
-        self.choose_2.setStyleSheet("background-color: rgba(0, 0, 0, 0);\n"
-                                    "font: 11pt \"Roboto\";")
-        self.choose_2.setObjectName("choose_2")
-        self.hear = QtWidgets.QPushButton(self.Games)
-        self.hear.setFocusPolicy(Qt.NoFocus)
-        self.hear.setGeometry(QtCore.QRect(60, 350, 341, 121))
-        self.hear.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.hear.setStyleSheet("QPushButton{\n"
-                                "    background-color: rgb(255, 203, 185);\n"
-                                "    font: 15pt \"Montserrat Medium\";\n"
-                                "    border-radius: 20px;\n"
-                                "}\n"
-                                "\n"
-                                "QPushButton:hover {\n"
-                                "    font-size: 17pt;   \n"
-                                "}\n"
-                                "\n"
-                                "QPushButton:pressed {\n"
-                                "    background-color: rgb(229, 182, 166);       \n"
-                                "}")
-        self.hear.setObjectName("hear")
-        self.pack = QtWidgets.QPushButton(self.Games)
-        self.pack.setFocusPolicy(Qt.NoFocus)
-        self.pack.setGeometry(QtCore.QRect(880, 350, 341, 121))
-        self.pack.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pack.setStyleSheet("QPushButton{\n"
-                                "    background-color: rgb(255, 203, 185);\n"
-                                "    font: 15pt \"Montserrat Medium\";\n"
-                                "    border-radius: 20px;\n"
-                                "}\n"
-                                "\n"
-                                "QPushButton:hover {\n"
-                                "    font-size: 17pt;   \n"
-                                "}\n"
-                                "\n"
-                                "QPushButton:pressed {\n"
-                                "    background-color: rgb(229, 182, 166);       \n"
-                                "}")
-        self.pack.setObjectName("pack")
-        self.rain = QtWidgets.QPushButton(self.Games)
-        self.rain.setFocusPolicy(Qt.NoFocus)
-        self.rain.setGeometry(QtCore.QRect(470, 350, 341, 121))
-        self.rain.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.rain.setStyleSheet("QPushButton{\n"
-                                "    background-color: rgb(255, 203, 185);\n"
-                                "    font: 15pt \"Montserrat Medium\";\n"
-                                "    border-radius: 20px;\n"
-                                "}\n"
-                                "\n"
-                                "QPushButton:hover {\n"
-                                "    font-size: 17pt;   \n"
-                                "}\n"
-                                "\n"
-                                "QPushButton:pressed {\n"
-                                "    background-color: rgb(229, 182, 166);\n"
-                                "}")
-
-        self.rain.setObjectName("rain")
         self.stackedWidget.addWidget(self.Games)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -1365,7 +1546,8 @@ class Ui_MainWindow(object):
 
         self.lrn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.ex.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
-        self.gm.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
+        self.story.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
+
         self.lvl_1.clicked.connect(lambda: self.btn(1))
         self.lvl_2.clicked.connect(lambda: self.btn(2))
         self.lvl_3.clicked.connect(lambda: self.btn(3))
@@ -1378,6 +1560,16 @@ class Ui_MainWindow(object):
         self.lvl_10.clicked.connect(lambda: self.btn(10))
         self.lvl_11.clicked.connect(lambda: self.btn(11))
         self.lvl_12.clicked.connect(lambda: self.btn(12))
+        self.st1.clicked.connect(lambda: self.btn_st(1))
+        self.st2.clicked.connect(lambda: self.btn_st(2))
+        self.st3.clicked.connect(lambda: self.btn_st(3))
+        self.st4.clicked.connect(lambda: self.btn_st(4))
+        self.st5.clicked.connect(lambda: self.btn_st(5))
+        self.st6.clicked.connect(lambda: self.btn_st(6))
+        self.st7.clicked.connect(lambda: self.btn_st(7))
+        self.st8.clicked.connect(lambda: self.btn_st(8))
+        self.st9.clicked.connect(lambda: self.btn_st(9))
+        self.st10.clicked.connect(lambda: self.btn_st(10))
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -1385,102 +1577,106 @@ class Ui_MainWindow(object):
         self.type.setText(_translate("MainWindow", "type"))
         self.Fast.setText(_translate("MainWindow", "Fast"))
         self.lrn.setText(_translate("MainWindow", "Обучение"))
-        self.gm.setText(_translate("MainWindow", "Игры"))
         self.ex.setText(_translate("MainWindow", "Тренировка"))
         self.label_6.setText(_translate("MainWindow", "Обучение"))
+
         self.lvl_1.setText(_translate("MainWindow", "Уровень 1"))
         self.lvl_2.setText(_translate("MainWindow", "Уровень 2"))
         self.lvl_3.setText(_translate("MainWindow", "Уровень 3"))
         self.lvl_4.setText(_translate("MainWindow", "Уровень 4"))
         self.lvl_5.setText(_translate("MainWindow", "Уровень 5"))
-        self.lvl_8.setText(_translate("MainWindow", "Уровень 8"))
-        self.lvl_7.setText(_translate("MainWindow", "Уровень 7"))
         self.lvl_6.setText(_translate("MainWindow", "Уровень 6"))
-        self.lvl_12.setText(_translate("MainWindow", "Уровень 12"))
+        self.lvl_7.setText(_translate("MainWindow", "Уровень 7"))
+        self.lvl_8.setText(_translate("MainWindow", "Уровень 8"))
         self.lvl_9.setText(_translate("MainWindow", "Уровень 9"))
         self.lvl_10.setText(_translate("MainWindow", "Уровень 10"))
         self.lvl_11.setText(_translate("MainWindow", "Уровень 11"))
-        self.let1_23.setText(_translate("MainWindow", "е"))
-        self.let2_14.setText(_translate("MainWindow", "о"))
-        self.label.setText(_translate("MainWindow", "Уровень 1"))
-        self.let2_17.setText(_translate("MainWindow", "а"))
-        self.let1_17.setText(_translate("MainWindow", "щ"))
-        self.let1_15.setText(_translate("MainWindow", "г"))
-        self.n9_2.setText(_translate("MainWindow", "9"))
-        self.let2_18.setText(_translate("MainWindow", "л"))
-        self.n7_2.setText(_translate("MainWindow", "7"))
-        self.let1_16.setText(_translate("MainWindow", "ш"))
-        self.eq_2.setText(_translate("MainWindow", "="))
-        self.tab_2.setText(_translate("MainWindow", "Tab"))
-        self.menu_2.setText(_translate("MainWindow", "Menu"))
-        self.let2_20.setText(_translate("MainWindow", "ф"))
-        self.let3_17.setText(_translate("MainWindow", "б"))
-        self.let3_16.setText(_translate("MainWindow", "я"))
-        self.shift_r_2.setText(_translate("MainWindow", "Shift"))
-        self.let1_22.setText(_translate("MainWindow", "й"))
-        self.dash_2.setText(_translate("MainWindow", "-"))
-        self.let1_13.setText(_translate("MainWindow", "ц"))
-        self.let3_20.setText(_translate("MainWindow", "т"))
-        self.let3_14.setText(_translate("MainWindow", "ь"))
-        self.let2_13.setText(_translate("MainWindow", "п"))
-        self.alt_l_2.setText(_translate("MainWindow", "Alt"))
-        self.let1_19.setText(_translate("MainWindow", "н"))
-        self.n5_2.setText(_translate("MainWindow", "5"))
-        self.let2_12.setText(_translate("MainWindow", "д"))
-        self.let2_15.setText(_translate("MainWindow", "в"))
-        self.let3_15.setText(_translate("MainWindow", "ю"))
-        self.alt_r_2.setText(_translate("MainWindow", "Alt"))
-        self.win_r_2.setText(_translate("MainWindow", "Win"))
-        self.yo_2.setText(_translate("MainWindow", "ё"))
-        self.let2_16.setText(_translate("MainWindow", "ы"))
-        self.let2_21.setText(_translate("MainWindow", "р"))
-        self.n1_2.setText(_translate("MainWindow", "1"))
-        self.n4_2.setText(_translate("MainWindow", "4"))
-        self.let3_12.setText(_translate("MainWindow", "ч"))
-        self.n0_2.setText(_translate("MainWindow", "0"))
-        self.text_1.setText(_translate("MainWindow", "Нажмите любую клавишу"))
-        self.n2_2.setText(_translate("MainWindow", "2"))
-        self.let1_14.setText(_translate("MainWindow", "ъ"))
-        self.ctrl_r_2.setText(_translate("MainWindow", "Ctrl"))
-        self.slash_2.setText(_translate("MainWindow", "\\"))
-        self.n6_2.setText(_translate("MainWindow", "6"))
-        self.let2_19.setText(_translate("MainWindow", "ж"))
-        self.let1_21.setText(_translate("MainWindow", "х"))
-        self.let3_18.setText(_translate("MainWindow", "."))
-        self.backspace_2.setText(_translate("MainWindow", "Backspace"))
-        self.let1_18.setText(_translate("MainWindow", "к"))
-        self.let3_11.setText(_translate("MainWindow", "м"))
-        self.let1_20.setText(_translate("MainWindow", "з"))
-        self.n3_2.setText(_translate("MainWindow", "3"))
-        self.caps_2.setText(_translate("MainWindow", "Caps Lock"))
-        self.n8_2.setText(_translate("MainWindow", "8"))
-        self.let2_22.setText(_translate("MainWindow", "э"))
-        self.let1_24.setText(_translate("MainWindow", "у"))
-        self.let3_19.setText(_translate("MainWindow", "и"))
-        self.shift_l_2.setText(_translate("MainWindow", "Shift"))
-        self.ctrl_l_2.setText(_translate("MainWindow", "Ctrl"))
-        self.enter_2.setText(_translate("MainWindow", "Enter"))
-        self.let3_13.setText(_translate("MainWindow", "с"))
-        self.win_l_2.setText(_translate("MainWindow", "Win"))
-        self.label_8.setText(_translate("MainWindow", "Тренировка"))
+        self.lvl_12.setText(_translate("MainWindow", "Уровень 12"))
+
+        self.let1_1.setText(_translate("MainWindow", "ё"))
+        self.n1_1.setText(_translate("MainWindow", "1"))
+        self.n2_1.setText(_translate("MainWindow", "2"))
+        self.n3_1.setText(_translate("MainWindow", "3"))
+        self.n4_1.setText(_translate("MainWindow", "4"))
+        self.n5_1.setText(_translate("MainWindow", "5"))
+        self.n6_1.setText(_translate("MainWindow", "6"))
+        self.n7_1.setText(_translate("MainWindow", "7"))
+        self.n8_1.setText(_translate("MainWindow", "8"))
+        self.n9_1.setText(_translate("MainWindow", "9"))
+        self.n0_1.setText(_translate("MainWindow", "0"))
+        self.dash_1.setText(_translate("MainWindow", "-"))
+        self.eq_1.setText(_translate("MainWindow", "="))
+        self.backspace_1.setText(_translate("MainWindow", "Backspace"))
+
+        self.tab_1.setText(_translate("MainWindow", "Tab"))
+        self.let2_1.setText(_translate("MainWindow", "й"))
+        self.let3_1.setText(_translate("MainWindow", "ц"))
+        self.let4_1.setText(_translate("MainWindow", "у"))
+        self.let5_1.setText(_translate("MainWindow", "к"))
+        self.let6_1.setText(_translate("MainWindow", "е"))
+        self.let7_1.setText(_translate("MainWindow", "н"))
+        self.let8_1.setText(_translate("MainWindow", "г"))
+        self.let9_1.setText(_translate("MainWindow", "ш"))
+        self.let10_1.setText(_translate("MainWindow", "щ"))
+        self.let11_1.setText(_translate("MainWindow", "з"))
+        self.let12_1.setText(_translate("MainWindow", "х"))
+        self.let13_1.setText(_translate("MainWindow", "ъ"))
+        self.slash_1.setText(_translate("MainWindow", "\\"))
+
+        self.caps_1.setText(_translate("MainWindow", "Caps Lock"))
+        self.let14_1.setText(_translate("MainWindow", "ф"))
+        self.let15_1.setText(_translate("MainWindow", "ы"))
+        self.let16_1.setText(_translate("MainWindow", "в"))
+        self.let17_1.setText(_translate("MainWindow", "а"))
+        self.let18_1.setText(_translate("MainWindow", "п"))
+        self.let19_1.setText(_translate("MainWindow", "р"))
+        self.let20_1.setText(_translate("MainWindow", "о"))
+        self.let21_1.setText(_translate("MainWindow", "л"))
+        self.let22_1.setText(_translate("MainWindow", "д"))
+        self.let23_1.setText(_translate("MainWindow", "ж"))
+        self.let24_1.setText(_translate("MainWindow", "э"))
+        self.enter_1.setText(_translate("MainWindow", "Enter"))
+
+        self.l_shift_1.setText(_translate("MainWindow", "Shift"))
+        self.let25_1.setText(_translate("MainWindow", "я"))
+        self.let26_1.setText(_translate("MainWindow", "ч"))
+        self.let27_1.setText(_translate("MainWindow", "с"))
+        self.let28_1.setText(_translate("MainWindow", "м"))
+        self.let29_1.setText(_translate("MainWindow", "и"))
+        self.let30_1.setText(_translate("MainWindow", "т"))
+        self.let31_1.setText(_translate("MainWindow", "ь"))
+        self.let32_1.setText(_translate("MainWindow", "б"))
+        self.let33_1.setText(_translate("MainWindow", "ю"))
+        self.dot_1.setText(_translate("MainWindow", "."))
+        self.r_shift_1.setText(_translate("MainWindow", "Shift"))
+
+        self.l_ctrl_1.setText(_translate("MainWindow", "Ctrl"))
+        self.l_win_1.setText(_translate("MainWindow", "Win"))
+        self.l_alt_1.setText(_translate("MainWindow", "Alt"))
+        self.r_alt_1.setText(_translate("MainWindow", "Alt"))
+        self.r_win_1.setText(_translate("MainWindow", "Win"))
+        self.menu_1.setText(_translate("MainWindow", "Menu"))
+        self.r_ctrl_1.setText(_translate("MainWindow", "Ctrl"))
+
+        self.lvl_label.setText(_translate("MainWindow", "Уровень 1"))
+        self.time_label_1.setText(_translate("Fast_type", "00:00"))
+        self.inp_1.setText(_translate("MainWindow", "Нажмите любую клавишу"))
+
+        self.train.setText(_translate("MainWindow", "Тренировка"))
         self.time.setText(_translate("MainWindow", "На время"))
-        self.comboBox.setCurrentText(_translate("MainWindow", "Низкий"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "Низкий"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "Средний"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "Высокий"))
-        self.choose_1.setText(_translate("MainWindow", "Выберите уровень подготовки:"))
         self.story.setText(_translate("MainWindow", "Истории"))
-        self.inf.setText(_translate("MainWindow", "Бесконечный"))
-        self.label_9.setText(_translate("MainWindow", "Игры"))
-        self.comboBox_2.setCurrentText(_translate("MainWindow", "Низкий"))
-        self.comboBox_2.setItemText(0, _translate("MainWindow", "Низкий"))
-        self.comboBox_2.setItemText(1, _translate("MainWindow", "Средний"))
-        self.comboBox_2.setItemText(2, _translate("MainWindow", "Высокий"))
-        self.choose_2.setText(_translate("MainWindow", "Выберите уровень подготовки:"))
         self.hear.setText(_translate("MainWindow", "На слух"))
-        self.pack.setText(_translate("MainWindow", "Пакмен"))
-        self.rain.setText(_translate("MainWindow", "Дождь"))
-        self.time_label.setText(_translate("Fast_type", "00:00"))
+
+        self.st1.setText(_translate("MainWindow", "Вверх по лестнице"))
+        self.st2.setText(_translate("MainWindow", "Делец"))
+        self.st3.setText(_translate("MainWindow", "Неудача"))
+        self.st4.setText(_translate("MainWindow", "Дачники"))
+        self.st5.setText(_translate("MainWindow", "Баран и барышня"))
+        self.st6.setText(_translate("MainWindow", "Толстый и тонкий"))
+        self.st7.setText(_translate("MainWindow", "Смерть чиновника"))
+        self.st8.setText(_translate("MainWindow", "Пересолил"))
+        self.st9.setText(_translate("MainWindow", "Беззаконие"))
+        self.st10.setText(_translate("MainWindow", "Визитные карточки"))
 
 
 if __name__ == "__main__":

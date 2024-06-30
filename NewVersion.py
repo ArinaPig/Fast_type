@@ -74,9 +74,6 @@ class Ui_MainWindow(object):
         self.timer.stop()
         f_temp = datetime.utcfromtimestamp(self.temp - 1).strftime("%M:%S")
         v = round(i / (self.temp - 1) * 60)
-        # mixer.init()
-        # mixer.music.load('audio1.mp3')
-        # mixer.music.play()
         end = 'Ошибки: ' + str(mist) + '   Введено символов: ' + str(i) + '   Время: ' + str(f_temp) + '   Скорость (зн/мин): ' + str(v)
         self.inp_1.setAlignment(QtCore.Qt.AlignCenter)
         self.inp_1.setFont(QtGui.QFont("Roboto", 17))
@@ -150,6 +147,43 @@ class Ui_MainWindow(object):
         print('время: ', f_temp)
         print('скорость (зн/мин): ', v)
 
+    def btn_aud(self, num):
+        self.stackedWidget.setCurrentIndex(2)
+        self.num = num
+        self.win_aud()
+        self.menu_icon_lvl.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+
+    def win_aud(self):
+        self.lvl_label.setText(f"Уровень {self.num}")
+
+        self.l = []
+
+        with open(f'Stories/Story{self.num}.txt', 'r', encoding='utf-8') as f:
+            for i in f:
+                self.l.append(i)
+
+        self.s = ''.join(self.l)
+        self.wr = ''
+
+        th1 = Thread(target=self.start_level_aud)
+        th1.start()
+
+        self.temp = 0
+
+        self.inp_1.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.inp_1.setFont(QtGui.QFont("Roboto", 20))
+        self.inp_1.setText('Нажмите любую клавишу')
+
+        self.timer.start()
+
+    def start_level_aud(self):
+        key_pressed = read_event()
+        if key_pressed.event_type == KEY_DOWN:
+            self.inp_1.setText(self.wr)
+            mixer.init()
+            mixer.music.load('Audio/audio1.mp3')
+            mixer.music.play()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setFixedSize(1280, 720)
@@ -165,15 +199,18 @@ class Ui_MainWindow(object):
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
         self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 1280, 720))
         self.stackedWidget.setObjectName("stackedWidget")
+
         self.Main = QtWidgets.QWidget()
         self.Main.setStyleSheet(
             "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(188, 255, 199, 255), stop:1 rgba(174, 231, 255, 255));")
-        self.Main.setObjectName("Mane")
+        self.Main.setObjectName("Main")
+
         self.type = QtWidgets.QLabel(self.Main)
         self.type.setGeometry(QtCore.QRect(670, 70, 321, 131))
         self.type.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
                                 "font: 95pt \"Agency FB\";")
         self.type.setObjectName("type")
+
         self.Fast = QtWidgets.QLabel(self.Main)
         self.Fast.setGeometry(QtCore.QRect(440, 70, 231, 121))
         self.Fast.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
@@ -184,6 +221,7 @@ class Ui_MainWindow(object):
                                 "")
         self.Fast.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.Fast.setObjectName("Fast")
+
         self.lrn = QtWidgets.QPushButton(self.Main)
         self.lrn.setFocusPolicy(Qt.NoFocus)
         self.lrn.setGeometry(QtCore.QRect(270, 350, 340, 120))
@@ -227,6 +265,7 @@ class Ui_MainWindow(object):
         self.Learning.setStyleSheet(
             "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(188, 255, 199, 255), stop:1 rgba(174, 231, 255, 255));")
         self.Learning.setObjectName("Learning")
+
         self.label_st = QtWidgets.QLabel(self.Learning)
         self.label_st.setGeometry(QtCore.QRect(530, 60, 221, 61))
         self.label_st.setStyleSheet("font: 30pt \"Montserrat Medium\";\n"
@@ -237,7 +276,7 @@ class Ui_MainWindow(object):
         icon_h.addPixmap(QtGui.QPixmap("img/home.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 
         icon_m = QtGui.QIcon()
-        icon_m.addPixmap(QtGui.QPixmap("img/menu.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon_m.addPixmap(QtGui.QPixmap("img/back-button.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 
         self.home_icon1 = QtWidgets.QPushButton(self.Learning)
         self.home_icon1.setFocusPolicy(Qt.NoFocus)
@@ -248,6 +287,16 @@ class Ui_MainWindow(object):
         self.home_icon1.setIconSize(QtCore.QSize(50, 50))
         self.home_icon1.setObjectName("home_icon")
         self.home_icon1.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+
+        self.menu_icon_l = QtWidgets.QPushButton(self.Learning)
+        self.menu_icon_l.setFocusPolicy(Qt.NoFocus)
+        self.menu_icon_l.setGeometry(QtCore.QRect(120, 40, 60, 60))
+        self.menu_icon_l.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.menu_icon_l.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n")
+        self.menu_icon_l.setIcon(icon_m)
+        self.menu_icon_l.setIconSize(QtCore.QSize(50, 50))
+        self.menu_icon_l.setObjectName("menu_icon_l")
+        self.menu_icon_l.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
 
         self.lvl_1 = QtWidgets.QPushButton(self.Learning)
         self.lvl_1.setFocusPolicy(Qt.NoFocus)
@@ -266,13 +315,14 @@ class Ui_MainWindow(object):
                                  "QPushButton:pressed {\n"
                                  "    background-color: rgb(229, 182, 166);       \n"
                                  "}")
+        self.lvl_1.setObjectName("lvl_1")
+
         self.label_lvl = QtWidgets.QLabel(self.Learning)
         self.label_lvl.setGeometry(QtCore.QRect(530, 60, 221, 61))
         self.label_lvl.setStyleSheet("font: 30pt \"Montserrat Medium\";\n"
-                                    "background-color:  rgba(188, 255, 199, 0)")
+                                     "background-color:  rgba(188, 255, 199, 0)")
         self.label_st.setObjectName("label_lvl")
 
-        self.lvl_1.setObjectName("lvl_1")
         self.lvl_2 = QtWidgets.QPushButton(self.Learning)
         self.lvl_2.setFocusPolicy(Qt.NoFocus)
         self.lvl_2.setGeometry(QtCore.QRect(370, 180, 241, 121))
@@ -291,6 +341,7 @@ class Ui_MainWindow(object):
                                  "    background-color: rgb(229, 182, 166);       \n"
                                  "}")
         self.lvl_2.setObjectName("lvl_2")
+
         self.lvl_3 = QtWidgets.QPushButton(self.Learning)
         self.lvl_3.setFocusPolicy(Qt.NoFocus)
         self.lvl_3.setGeometry(QtCore.QRect(670, 180, 241, 121))
@@ -309,6 +360,7 @@ class Ui_MainWindow(object):
                                  "    background-color: rgb(229, 182, 166);       \n"
                                  "}")
         self.lvl_3.setObjectName("lvl_3")
+
         self.lvl_4 = QtWidgets.QPushButton(self.Learning)
         self.lvl_4.setFocusPolicy(Qt.NoFocus)
         self.lvl_4.setGeometry(QtCore.QRect(970, 180, 241, 121))
@@ -328,6 +380,7 @@ class Ui_MainWindow(object):
                                  "}\n"
                                  "")
         self.lvl_4.setObjectName("lvl_4")
+
         self.lvl_5 = QtWidgets.QPushButton(self.Learning)
         self.lvl_5.setFocusPolicy(Qt.NoFocus)
         self.lvl_5.setGeometry(QtCore.QRect(70, 350, 241, 121))
@@ -346,42 +399,7 @@ class Ui_MainWindow(object):
                                  "    background-color: rgb(229, 182, 166);       \n"
                                  "}")
         self.lvl_5.setObjectName("lvl_5")
-        self.lvl_8 = QtWidgets.QPushButton(self.Learning)
-        self.lvl_8.setFocusPolicy(Qt.NoFocus)
-        self.lvl_8.setGeometry(QtCore.QRect(970, 350, 241, 121))
-        self.lvl_8.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.lvl_8.setStyleSheet("QPushButton{\n"
-                                 "    background-color: rgb(255, 203, 185);\n"
-                                 "    font: 15pt \"Montserrat Medium\";\n"
-                                 "    border-radius: 20px;\n"
-                                 "}\n"
-                                 "\n"
-                                 "QPushButton:hover {\n"
-                                 "    font-size: 17pt;   \n"
-                                 "}\n"
-                                 "\n"
-                                 "QPushButton:pressed {\n"
-                                 "    background-color: rgb(229, 182, 166);       \n"
-                                 "}")
-        self.lvl_8.setObjectName("lvl_8")
-        self.lvl_7 = QtWidgets.QPushButton(self.Learning)
-        self.lvl_7.setFocusPolicy(Qt.NoFocus)
-        self.lvl_7.setGeometry(QtCore.QRect(670, 350, 241, 121))
-        self.lvl_7.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.lvl_7.setStyleSheet("QPushButton{\n"
-                                 "    background-color: rgb(255, 203, 185);\n"
-                                 "    font: 15pt \"Montserrat Medium\";\n"
-                                 "    border-radius: 20px;\n"
-                                 "}\n"
-                                 "\n"
-                                 "QPushButton:hover {\n"
-                                 "    font-size: 17pt;   \n"
-                                 "}\n"
-                                 "\n"
-                                 "QPushButton:pressed {\n"
-                                 "    background-color: rgb(229, 182, 166);       \n"
-                                 "}")
-        self.lvl_7.setObjectName("lvl_7")
+
         self.lvl_6 = QtWidgets.QPushButton(self.Learning)
         self.lvl_6.setFocusPolicy(Qt.NoFocus)
         self.lvl_6.setGeometry(QtCore.QRect(370, 350, 241, 121))
@@ -400,24 +418,45 @@ class Ui_MainWindow(object):
                                  "    background-color: rgb(229, 182, 166);       \n"
                                  "}")
         self.lvl_6.setObjectName("lvl_6")
-        self.lvl_12 = QtWidgets.QPushButton(self.Learning)
-        self.lvl_12.setFocusPolicy(Qt.NoFocus)
-        self.lvl_12.setGeometry(QtCore.QRect(970, 530, 241, 121))
-        self.lvl_12.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.lvl_12.setStyleSheet("QPushButton{\n"
-                                  "    background-color: rgb(255, 203, 185);\n"
-                                  "    font: 15pt \"Montserrat Medium\";\n"
-                                  "    border-radius: 20px;\n"
-                                  "}\n"
-                                  "\n"
-                                  "QPushButton:hover {\n"
-                                  "    font-size: 17pt;   \n"
-                                  "}\n"
-                                  "\n"
-                                  "QPushButton:pressed {\n"
-                                  "    background-color: rgb(229, 182, 166);       \n"
-                                  "}")
-        self.lvl_12.setObjectName("lvl_12")
+
+        self.lvl_7 = QtWidgets.QPushButton(self.Learning)
+        self.lvl_7.setFocusPolicy(Qt.NoFocus)
+        self.lvl_7.setGeometry(QtCore.QRect(670, 350, 241, 121))
+        self.lvl_7.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lvl_7.setStyleSheet("QPushButton{\n"
+                                 "    background-color: rgb(255, 203, 185);\n"
+                                 "    font: 15pt \"Montserrat Medium\";\n"
+                                 "    border-radius: 20px;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:hover {\n"
+                                 "    font-size: 17pt;   \n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:pressed {\n"
+                                 "    background-color: rgb(229, 182, 166);       \n"
+                                 "}")
+        self.lvl_7.setObjectName("lvl_7")
+
+        self.lvl_8 = QtWidgets.QPushButton(self.Learning)
+        self.lvl_8.setFocusPolicy(Qt.NoFocus)
+        self.lvl_8.setGeometry(QtCore.QRect(970, 350, 241, 121))
+        self.lvl_8.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lvl_8.setStyleSheet("QPushButton{\n"
+                                 "    background-color: rgb(255, 203, 185);\n"
+                                 "    font: 15pt \"Montserrat Medium\";\n"
+                                 "    border-radius: 20px;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:hover {\n"
+                                 "    font-size: 17pt;   \n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:pressed {\n"
+                                 "    background-color: rgb(229, 182, 166);       \n"
+                                 "}")
+        self.lvl_8.setObjectName("lvl_8")
+
         self.lvl_9 = QtWidgets.QPushButton(self.Learning)
         self.lvl_9.setFocusPolicy(Qt.NoFocus)
         self.lvl_9.setGeometry(QtCore.QRect(70, 530, 241, 121))
@@ -436,6 +475,7 @@ class Ui_MainWindow(object):
                                  "    background-color: rgb(229, 182, 166);       \n"
                                  "}")
         self.lvl_9.setObjectName("lvl_9")
+
         self.lvl_10 = QtWidgets.QPushButton(self.Learning)
         self.lvl_10.setFocusPolicy(Qt.NoFocus)
         self.lvl_10.setGeometry(QtCore.QRect(370, 530, 241, 121))
@@ -454,6 +494,7 @@ class Ui_MainWindow(object):
                                   "    background-color: rgb(229, 182, 166);       \n"
                                   "}")
         self.lvl_10.setObjectName("lvl_10")
+
         self.lvl_11 = QtWidgets.QPushButton(self.Learning)
         self.lvl_11.setFocusPolicy(Qt.NoFocus)
         self.lvl_11.setGeometry(QtCore.QRect(670, 530, 241, 121))
@@ -472,6 +513,26 @@ class Ui_MainWindow(object):
                                   "    background-color: rgb(229, 182, 166);       \n"
                                   "}")
         self.lvl_11.setObjectName("lvl_11")
+
+        self.lvl_12 = QtWidgets.QPushButton(self.Learning)
+        self.lvl_12.setFocusPolicy(Qt.NoFocus)
+        self.lvl_12.setGeometry(QtCore.QRect(970, 530, 241, 121))
+        self.lvl_12.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lvl_12.setStyleSheet("QPushButton{\n"
+                                  "    background-color: rgb(255, 203, 185);\n"
+                                  "    font: 15pt \"Montserrat Medium\";\n"
+                                  "    border-radius: 20px;\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton:hover {\n"
+                                  "    font-size: 17pt;   \n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton:pressed {\n"
+                                  "    background-color: rgb(229, 182, 166);       \n"
+                                  "}")
+        self.lvl_12.setObjectName("lvl_12")
+
         self.stackedWidget.addWidget(self.Learning)
 
         self.Levels = QtWidgets.QWidget()
@@ -1318,6 +1379,16 @@ class Ui_MainWindow(object):
         self.home_icon3.setObjectName("home_icon")
         self.home_icon3.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
 
+        self.menu_icon_tr = QtWidgets.QPushButton(self.Exercise)
+        self.menu_icon_tr.setFocusPolicy(Qt.NoFocus)
+        self.menu_icon_tr.setGeometry(QtCore.QRect(120, 40, 60, 60))
+        self.menu_icon_tr.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.menu_icon_tr.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n")
+        self.menu_icon_tr.setIcon(icon_m)
+        self.menu_icon_tr.setIconSize(QtCore.QSize(50, 50))
+        self.menu_icon_tr.setObjectName("menu_icon_tr")
+        self.menu_icon_tr.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+
         self.train = QtWidgets.QLabel(self.Exercise)
         self.train.setGeometry(QtCore.QRect(510, 50, 261, 61))
         self.train.setStyleSheet("font: 30pt \"Montserrat Medium\";\n"
@@ -1363,7 +1434,6 @@ class Ui_MainWindow(object):
         self.story.setObjectName("story")
 
         self.audio = QtWidgets.QPushButton(self.Exercise)
-
         self.audio.setFocusPolicy(Qt.NoFocus)
         self.audio.setGeometry(QtCore.QRect(880, 350, 341, 121))
         self.audio.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -1388,6 +1458,7 @@ class Ui_MainWindow(object):
         self.Stories.setStyleSheet(
             "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(188, 255, 199, 255), stop:1 rgba(174, 231, 255, 255));")
         self.Stories.setObjectName("Stories")
+
         self.label_st = QtWidgets.QLabel(self.Stories)
         self.label_st.setGeometry(QtCore.QRect(530, 60, 221, 61))
         self.label_st.setStyleSheet("font: 30pt \"Montserrat Medium\";\n"
@@ -1403,6 +1474,16 @@ class Ui_MainWindow(object):
         self.home_icon4.setIconSize(QtCore.QSize(50, 50))
         self.home_icon4.setObjectName("home_icon")
         self.home_icon4.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+
+        self.menu_icon_st = QtWidgets.QPushButton(self.Stories)
+        self.menu_icon_st.setFocusPolicy(Qt.NoFocus)
+        self.menu_icon_st.setGeometry(QtCore.QRect(120, 40, 60, 60))
+        self.menu_icon_st.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.menu_icon_st.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n")
+        self.menu_icon_st.setIcon(icon_m)
+        self.menu_icon_st.setIconSize(QtCore.QSize(50, 50))
+        self.menu_icon_st.setObjectName("menu_icon_st")
+        self.menu_icon_st.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
 
         self.st1 = QtWidgets.QPushButton(self.Stories)
         self.st1.setFocusPolicy(Qt.NoFocus)
@@ -1600,21 +1681,32 @@ class Ui_MainWindow(object):
         self.Audio.setStyleSheet(
             "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(188, 255, 199, 255), stop:1 rgba(174, 231, 255, 255));")
         self.Audio.setObjectName("Audio")
+
         self.label_aud = QtWidgets.QLabel(self.Audio)
         self.label_aud.setGeometry(QtCore.QRect(500, 60, 300, 61))
         self.label_aud.setStyleSheet("font: 30pt \"Montserrat Medium\";\n"
                                     "background-color:  rgba(188, 255, 199, 0)")
         self.label_st.setObjectName("label_aud")
 
-        self.home_icon4 = QtWidgets.QPushButton(self.Audio)
-        self.home_icon4.setFocusPolicy(Qt.NoFocus)
-        self.home_icon4.setGeometry(QtCore.QRect(30, 40, 60, 60))
-        self.home_icon4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.home_icon4.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n")
-        self.home_icon4.setIcon(icon_h)
-        self.home_icon4.setIconSize(QtCore.QSize(50, 50))
-        self.home_icon4.setObjectName("home_icon")
-        self.home_icon4.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.home_icon5 = QtWidgets.QPushButton(self.Audio)
+        self.home_icon5.setFocusPolicy(Qt.NoFocus)
+        self.home_icon5.setGeometry(QtCore.QRect(30, 40, 60, 60))
+        self.home_icon5.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.home_icon5.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n")
+        self.home_icon5.setIcon(icon_h)
+        self.home_icon5.setIconSize(QtCore.QSize(50, 50))
+        self.home_icon5.setObjectName("home_icon")
+        self.home_icon5.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+
+        self.menu_icon_aud = QtWidgets.QPushButton(self.Audio)
+        self.menu_icon_aud.setFocusPolicy(Qt.NoFocus)
+        self.menu_icon_aud.setGeometry(QtCore.QRect(120, 40, 60, 60))
+        self.menu_icon_aud.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.menu_icon_aud.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n")
+        self.menu_icon_aud.setIcon(icon_m)
+        self.menu_icon_aud.setIconSize(QtCore.QSize(50, 50))
+        self.menu_icon_aud.setObjectName("menu_icon_aud")
+        self.menu_icon_aud.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
 
         self.aud1 = QtWidgets.QPushButton(self.Audio)
         self.aud1.setFocusPolicy(Qt.NoFocus)
@@ -1842,16 +1934,16 @@ class Ui_MainWindow(object):
         self.st9.clicked.connect(lambda: self.btn_st(9))
         self.st10.clicked.connect(lambda: self.btn_st(10))
 
-        self.aud1.clicked.connect(lambda: self.btn_st(1))
-        self.aud2.clicked.connect(lambda: self.btn_st(2))
-        self.aud3.clicked.connect(lambda: self.btn_st(3))
-        self.aud4.clicked.connect(lambda: self.btn_st(4))
-        self.aud5.clicked.connect(lambda: self.btn_st(5))
-        self.aud6.clicked.connect(lambda: self.btn_st(6))
-        self.aud7.clicked.connect(lambda: self.btn_st(7))
-        self.aud8.clicked.connect(lambda: self.btn_st(8))
-        self.aud9.clicked.connect(lambda: self.btn_st(9))
-        self.aud10.clicked.connect(lambda: self.btn_st(10))
+        self.aud1.clicked.connect(lambda: self.btn_aud(1))
+        self.aud2.clicked.connect(lambda: self.btn_aud(2))
+        self.aud3.clicked.connect(lambda: self.btn_aud(3))
+        self.aud4.clicked.connect(lambda: self.btn_aud(4))
+        self.aud5.clicked.connect(lambda: self.btn_aud(5))
+        self.aud6.clicked.connect(lambda: self.btn_aud(6))
+        self.aud7.clicked.connect(lambda: self.btn_aud(7))
+        self.aud8.clicked.connect(lambda: self.btn_aud(8))
+        self.aud9.clicked.connect(lambda: self.btn_aud(9))
+        self.aud10.clicked.connect(lambda: self.btn_aud(10))
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

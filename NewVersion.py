@@ -122,8 +122,8 @@ class Ui_MainWindow(object):
         while i < len(self.s):
             key = read_event()
             key_name = key.name
-            print(key_name)
-            if (key.event_type == KEY_UP and (key_name == self.s[i])) or (key.event_type == KEY_UP and (key_name == 'space' and se lf.s[i] == ' ')) or (key.event_type == KEY_UP and (key_name == 'enter' and self.s[i] == 'a')):
+            if (key.event_type == KEY_UP and (key_name == self.s[i])) or (key_name == 'space' and self.s[i] == ' ') or (key_name == 'enter' and self.s[i] == ''
+''):
                 i += 1
                 text = self.s[i:]
                 self.inp_1.setText(text)
